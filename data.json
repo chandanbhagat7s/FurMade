@@ -1,0 +1,290 @@
+[
+    {
+        "productName": "Sofa",
+        "price": 500,
+        "avgRating": 4.5,
+        "type": "Furniture",
+        "deliveredIn": "3 days",
+        "discription": "Comfortable sofa for your living room.",
+        "features": [
+            "Genuine leather upholstery",
+            "Adjustable headrests",
+            "Sturdy wooden frame",
+            "Contemporary design",
+            "High-density foam for extra comfort"
+        ],
+        "colors": [
+            "Red",
+            "Blue",
+            "Gray"
+        ],
+        "discount": 50,
+        "dileveryCharges": 20,
+        "replacmentIn": "30 days",
+        "paymentMethod": [
+            "Online",
+            "Cash on Delivery"
+        ],
+        "warranty": "1 year",
+        "stillSold": 100,
+        "coverImage": "sofa_cover.jpg",
+        "Images": [
+            "image1.jpg",
+            "image2.jpg",
+            "image3.jpg"
+        ],
+        "dim": [
+            80,
+            150,
+            60
+        ],
+        "about": "High-quality sofa made with premium materials.",
+        "summery": "A comfortable and stylish sofa for your home."
+    },
+    {
+        "productName": "Bed",
+        "price": 700,
+        "avgRating": 4.2,
+        "type": "Furniture",
+        "deliveredIn": "2 days",
+        "discription": "Cozy bed for a good night's sleep.",
+        "features": [
+            "Genuine leather upholstery",
+            "Adjustable headrests",
+            "Sturdy wooden frame",
+            "Contemporary design",
+            "High-density foam for extra comfort"
+        ],
+        "colors": [
+            "Brown",
+            "White"
+        ],
+        "discount": 30,
+        "dileveryCharges": 15,
+        "replacmentIn": "45 days",
+        "paymentMethod": [
+            "Online",
+            "Cash on Delivery"
+        ],
+        "warranty": "2 years",
+        "stillSold": 80,
+        "coverImage": "bed_cover.jpg",
+        "Images": [
+            "image1.jpg",
+            "image2.jpg",
+            "image3.jpg"
+        ],
+        "dim": [
+            160,
+            200,
+            30
+        ],
+        "about": "Durable and elegant bed for your bedroom.Get a good night's sleep with this comfortable bed.Get a good night's sleep with this comfortable bed.",
+        "summery": "Get a good night's sleep with this comfortable bed.Get a good night's sleep with this comfortable bed.Get a good night's sleep with this comfortable bed.Get a good night's sleep with this comfortable bed.Get a good night's sleep with this comfortable bed.Get a good night's sleep with this comfortable bed.Get a good night's sleep with this comfortable bed."
+    },
+    {
+        "productName": "Table",
+        "price": 150,
+        "avgRating": 4.0,
+        "type": "Furniture",
+        "deliveredIn": "1 day",
+        "discription": "Stylish table for your living room.",
+        "features": [
+            "Genuine leather upholstery",
+            "Adjustable headrests",
+            "Sturdy wooden frame",
+            "Contemporary design",
+            "High-density foam for extra comfort"
+        ],
+        "colors": [
+            "Black",
+            "Brown"
+        ],
+        "discount": 20,
+        "dileveryCharges": 10,
+        "replacmentIn": "30 days",
+        "paymentMethod": [
+            "Online",
+            "Cash on Delivery"
+        ],
+        "warranty": "1 year",
+        "stillSold": 120,
+        "coverImage": "table_cover.jpg",
+        "Images": [
+            "image1.jpg",
+            "image2.jpg",
+            "image3.jpg"
+        ],
+        "dim": [
+            100,
+            60,
+            40
+        ],
+        "about": "Modern and functional table for your home.Get a good night's sleep with this comfortable bed.Get a good night's sleep with this comfortable bed.Get a good night's sleep with this comfortable bed.",
+        "summery": "Add style to your living space with this elegant table.Get a good night's sleep with this comfortable bed.Get a good night's sleep with this comfortable bed.Get a good night's sleep with this comfortable bed."
+    },
+    {
+        "productName": "Chair",
+        "price": 80,
+        "avgRating": 4.3,
+        "type": "Furniture",
+        "deliveredIn": "2 days",
+        "discription": "Comfortable chair for your workspace.",
+        "features": [
+            "Genuine leather upholstery",
+            "Adjustable headrests",
+            "Sturdy wooden frame",
+            "Contemporary design",
+            "High-density foam for extra comfort"
+        ],
+        "colors": [
+            "Black",
+            "Gray"
+        ],
+        "discount": 10,
+        "dileveryCharges": 5,
+        "replacmentIn": "15 days",
+        "paymentMethod": [
+            "Online",
+            "Cash on Delivery"
+        ],
+        "warranty": "1 year",
+        "stillSold": 150,
+        "coverImage": "chair_cover.jpg",
+        "Images": [
+            "image1.jpg",
+            "image2.jpg",
+            "image3.jpg"
+        ],
+        "dim": [
+            50,
+            50,
+            80
+        ],
+        "about": "Ergonomic chair designed for comfort and productivity.Get a good night's sleep with this comfortable bed.Get a good night's sleep with this comfortable bed.Get a good night's sleep with this comfortable bed.Get a good night's sleep with this comfortable bed.",
+        "summery": "Stay comfortable and focused with this ergonomic chair.Get a good night's sleep with this comfortable bed.Get a good night's sleep with this comfortable bed.Get a good night's sleep with this comfortable bed.Get a good night's sleep with this comfortable bed."
+    },
+    {
+        "productName": "Lamp",
+        "price": 25,
+        "avgRating": 4.7,
+        "type": "Home Decor",
+        "deliveredIn": "1 day",
+        "discription": "Stylish lamp to illuminate your space.",
+        "features": [
+            "Genuine leather upholstery",
+            "Adjustable headrests",
+            "Sturdy wooden frame",
+            "Contemporary design",
+            "High-density foam for extra comfort"
+        ],
+        "colors": [
+            "White",
+            "Gold"
+        ],
+        "discount": 15,
+        "dileveryCharges": 5,
+        "replacmentIn": "30 days",
+        "paymentMethod": [
+            "Online",
+            "Cash on Delivery"
+        ],
+        "warranty": "6 months",
+        "stillSold": 200,
+        "coverImage": "lamp_cover.jpg",
+        "Images": [
+            "image1.jpg",
+            "image2.jpg",
+            "image3.jpg"
+        ],
+        "dim": [
+            20,
+            20,
+            40
+        ],
+        "about": "Elegant lamp to enhance your room's ambiance.Get a good night's sleep with this comfortable bed.Get a good night's sleep with this comfortable bed.Get a good night's sleep with this comfortable bed.Get a good night's sleep with this comfortable bed.",
+        "summery": "Brighten up your space with this stylish lamp.Get a good night's sleep with this comfortable bed.Get a good night's sleep with this comfortable bed.Get a good night's sleep with this comfortable bed.Get a good night's sleep with this comfortable bed."
+    },
+    {
+        "productName": "D Table",
+        "price": 150,
+        "avgRating": 4.0,
+        "type": "Furniture",
+        "deliveredIn": "1 day",
+        "discription": "Stylish table for your living room.",
+        "features": [
+            "Genuine leather upholstery",
+            "Adjustable headrests",
+            "Sturdy wooden frame",
+            "Contemporary design",
+            "High-density foam for extra comfort"
+        ],
+        "colors": [
+            "Black",
+            "Brown"
+        ],
+        "discount": 20,
+        "dileveryCharges": 10,
+        "replacmentIn": "30 days",
+        "paymentMethod": [
+            "Online",
+            "Cash on Delivery"
+        ],
+        "warranty": "1 year",
+        "stillSold": 120,
+        "coverImage": "table_cover.jpg",
+        "Images": [
+            "image1.jpg",
+            "image2.jpg",
+            "image3.jpg"
+        ],
+        "dim": [
+            100,
+            60,
+            40
+        ],
+        "about": "Modern and functional table for your home.Get a good night's sleep with this comfortable bed.Get a good night's sleep with this comfortable bed.Get a good night's sleep with this comfortable bed.",
+        "summery": "Add style to your living space with this elegant table.Get a good night's sleep with this comfortable bed.Get a good night's sleep with this comfortable bed.Get a good night's sleep with this comfortable bed."
+    },
+    {
+        "productName": "Table2",
+        "price": 150,
+        "avgRating": 4.0,
+        "type": "Furniture",
+        "deliveredIn": "1 day",
+        "discription": "Stylish table for your living room.",
+        "features": [
+            "Genuine leather upholstery",
+            "Adjustable headrests",
+            "Sturdy wooden frame",
+            "Contemporary design",
+            "High-density foam for extra comfort"
+        ],
+        "colors": [
+            "Black",
+            "Brown"
+        ],
+        "discount": 20,
+        "dileveryCharges": 10,
+        "replacmentIn": "30 days",
+        "paymentMethod": [
+            "Online",
+            "Cash on Delivery"
+        ],
+        "warranty": "1 year",
+        "stillSold": 120,
+        "coverImage": "table_cover.jpg",
+        "Images": [
+            "image1.jpg",
+            "image2.jpg",
+            "image3.jpg"
+        ],
+        "dim": [
+            100,
+            60,
+            40
+        ],
+        "about": "Modern and functional table for your home.Get a good night's sleep with this comfortable bed.Get a good night's sleep with this comfortable bed.Get a good night's sleep with this comfortable bed.",
+        "summery": "Add style to your living space with this elegant table.Get a good night's sleep with this comfortable bed.Get a good night's sleep with this comfortable bed.Get a good night's sleep with this comfortable bed."
+    }
+]
