@@ -11,7 +11,8 @@ const appError = require('./utils/appError');
 
 
 //Product Router
-const ProductController = require('./Routes/productRoutes');
+const productRoutes = require('./Routes/productRoutes');
+const userRoutes = require('./Routes/userRoutes');
 
 // Start express app
 const app = express();
@@ -22,13 +23,15 @@ app.use(express.static('./public'))
 
 console.log(process.env.NODE_ENV);
 
-if (process.env.NODE_ENV !== 'production') {
-  app.use(morgan('dev'))
-}
+app.use(morgan('dev'))
 
 
 
 
+app.use((req, res, next) => {
+  console.log(req.headers);
+  next();
+})
 
 
 // creating objject
@@ -43,7 +46,9 @@ if (process.env.NODE_ENV !== 'production') {
 // })
 
 
-app.use('/api/product', ProductController)
+app.use('/api/v1/product', productRoutes)
+app.use('/api/v1/user', userRoutes)
+// app.use('/api/v1/review', reviewRoute)
 
 app.all('*', (req, res, next) => {
   // next function called with argumnet will triger the error handler direcly okk 
@@ -54,6 +59,8 @@ app.all('*', (req, res, next) => {
 
 // to handle error : this is error first handler
 app.use(globalErrorHandler)
+
+
 
 
 module.exports = app;

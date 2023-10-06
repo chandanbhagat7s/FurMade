@@ -1,4 +1,8 @@
 const mongoose = require('mongoose');
+const validator = require('validator');
+const bcrypt = require('bcryptjs');
+const crypto = require('crypto');
+
 
 const userSchema = new mongoose.Schema({
     name: {
@@ -6,26 +10,107 @@ const userSchema = new mongoose.Schema({
         required: [true, "user name to be provided"],
         trim: true,
         minLength: 1,
-        maxLength: 1
+        maxLength: 15
     },
     email: {
         type: String,
         required: [true, "user email to be provided"],
         unique: true,
+        lowercase: true,
+        validate: [validator.isEmail, 'provide the valid email address']
 
     },
     photo: String,
     password: {
         type: String,
         required: [true, "user password to be provided"],
+        minLength: 8
     },
+    passwordConfirm: {
+
+        type: String,
+        validate: {
+            validator: function (el) {
+                return el == this.password
+            },
+            message: "please enter correct password ",
+            required: [true, "must enter password once again for conformation"]
+        }
+    },
+    passwordChanged: Date,
+    role: {
+        type: String,
+        select: false,
+        default: 'USER'
+    },
+    passwordChangedAt: Date,
+    passwordResetToken: String,
+    passwordExpires: Date
+
 
 })
 
-// now creating model out of it 
-const user = mongoose.model('user', userSchema);
+// we want to encrypt the password before saving it to DB
 
-module.exports = user;
+// using schma middleware 
+userSchema.pre('save', async function (next) {
+    if (!this.isModified('password')) {
+        return next()
+    }
+
+    this.password = await bcrypt.hash(this.password, 12);
+    this.passwordConfirm = undefined;
+    next()
+
+})
+
+// we need to define the password change field okk 
+userSchema.pre('save', function (next) {
+    if (!this.isModified('password') || this.isNew) {
+        return next()
+    }
+
+    this.passwordChangedAt = Date.now() + 1000;
+    next()
+})
+
+userSchema.methods.correctPass = async function (inputpassword, password) {
+    return await bcrypt.compare(inputpassword, password)
+}
+
+userSchema.methods.IsPasswordChanged = function (time) {
+    if (this.passwordChanged) {
+        let timeChanged = this.passwordChanged.getTime() / 1000;
+
+        return time < timeChanged
+    }
+
+    return false;
+}
+
+
+// setting password reset token inENC
+
+userSchema.methods.setPasswordRestToken = function () {
+    let tokenO = crypto.randomBytes(32).toString('hex')
+
+
+
+    let token = crypto.createHash('sha256').update(tokenO).digest('hex');
+
+    this.passwordResetToken = token;
+    this.passwordExpires = Date.now() + 10 * 60 * 60 * 1000;
+
+    return tokenO;
+
+
+}
+
+
+// now creating model out of it 
+const User = mongoose.model('User', userSchema);
+
+module.exports = User;
 
 
 
