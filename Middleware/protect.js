@@ -17,7 +17,6 @@ exports.protectRoute = runAsync(async (req, res, next) => {
 
     // we need to get the id from the token which we have encoded 
     let decode = jwt.decode(token, process.env.JWT_SECRET_KEY)
-    console.log(decode);
     let currentUser = await User.findById(decode.id);
 
     if (!currentUser) {
@@ -25,7 +24,7 @@ exports.protectRoute = runAsync(async (req, res, next) => {
     }
 
     // we need to check weater the password is changed or not 
-    if (currenUser.IsPasswordChanged(decode.iat)) {
+    if (currentUser.IsPasswordChanged(decode.iat)) {
         return next(new appError("password has changed please login again", 401))
     }
 

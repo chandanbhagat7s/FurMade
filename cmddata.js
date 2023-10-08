@@ -21,11 +21,13 @@ const data = JSON.parse(fs.readFileSync('./data.json', 'utf-8'))
 const insertData = async () => {
     await Product.insertMany(data);
     console.log("data inserted succesfully");
+    process.exit();
 }
 
 const deleteData = async () => {
     await Product.deleteMany({});
     console.log("data deleted succesfully");
+    process.exit();
 }
 
 

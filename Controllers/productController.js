@@ -93,7 +93,10 @@ exports.getAllProduct = catchAsync(async (req, res, next) => {
 // get tour by id 
 
 exports.getProductById = catchAsync(async (req, res, next) => {
-    const product = await Product.findById(req.params.id)
+    const product = await Product.findById(req.params.id).populate({
+        path: 'review',
+        select: '-__v -createdAt'
+    })
 
     if (!product) {
         console.log("entred");

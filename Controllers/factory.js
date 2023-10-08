@@ -32,11 +32,30 @@ exports.getAll = Model => runAsync(async (req, res, next) => {
 
     res.status(200).json({
         status: 'success',
-        totalResult: allProducts.length,
+        totalResult: doc.length,
         data: {
             data: doc
         }
     })
+})
+
+
+exports.getOne = Model => runAsync(async (req, res, next) => {
+
+    const doc = await Model.findById(req.params.id)
+
+    if (!doc) {
+        console.log("entred");
+        return next(new appError('unable to find documnet  ', 404))
+    }
+    res.status(200).json({
+        status: 'success',
+        data: {
+            data: doc
+        }
+    })
+
+
 })
 
 

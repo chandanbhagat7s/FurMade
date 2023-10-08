@@ -1,6 +1,6 @@
 
 
-
+const path = require('path')
 const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
@@ -13,23 +13,29 @@ const appError = require('./utils/appError');
 //Product Router
 const productRoutes = require('./Routes/productRoutes');
 const userRoutes = require('./Routes/userRoutes');
+const reviewRoute = require('./Routes/reviewRoute');
+const viewRoute = require('./Routes/viewRoute');
 
 // Start express app
 const app = express();
 // to get all everything 
 app.use(express.json())
-app.use(express.static('./public'))
+// app.use(express.static('./public'))
 
 
 console.log(process.env.NODE_ENV);
 
 app.use(morgan('dev'))
 
-
+// for renderring pages 
+app.set('view engine', 'pug')
+// remove the bug of paths and slashes in finding the paths 
+app.set('views', path.join(__dirname, 'views'))
+app.use(express.static(path.join(__dirname, 'public')))
 
 
 app.use((req, res, next) => {
-  console.log(req.headers);
+  // console.log(req.headers);
   next();
 })
 
@@ -44,11 +50,13 @@ app.use((req, res, next) => {
 // }).catch((err) => {
 //   console.log("data not inserted", err);
 // })
+// now we illl render the pages
 
 
+app.use('/', viewRoute)
 app.use('/api/v1/product', productRoutes)
 app.use('/api/v1/user', userRoutes)
-// app.use('/api/v1/review', reviewRoute)
+app.use('/api/v1/review', reviewRoute)
 
 app.all('*', (req, res, next) => {
   // next function called with argumnet will triger the error handler direcly okk 

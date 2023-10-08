@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const slugify = require('slugify');
 
 // creating schema
 const productSchema = new mongoose.Schema({
@@ -88,11 +89,39 @@ const productSchema = new mongoose.Schema({
     dateAdded: {
         type: Date,
         default: Date.now
+    },
+
+    slug: {
+        type: String
     }
 
+},
+    {
+        toJSON: { virtuals: true },
+        toObject: { virtuals: true }
+    }
+)
+
+
+// we will create virtual propulate on product review
+productSchema.virtual('review', {
+    ref: 'Review',
+    foreignField: 'ofProduct',
+    localField: '_id'
 })
+
+productSchema.pre('save', function (next) {
+    this.slug = slugify(this.productName, { lower: true });
+    next();
+});
+
 
 // creating model of that schema
 const product = mongoose.model('product', productSchema)
+
+
+
+
+
 
 module.exports = product;
