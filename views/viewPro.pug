@@ -16,7 +16,11 @@ block content
                                         p.card-text=` Replacement In :  ${product.replacmentIn}` 
                                         p.card-text
                                             small.text-muted=`available in ${product.colors} colors`
-                                        a.btn(href=`productss/${product.slug}`  ) Details
+                                            
+                                        a.btn.btn-outline-success(href=`productss/${product.slug}`  ) Details
+                                        span   
+                                        a.btn.btn-outline-dark(href=`#`  ) Add to cart
+                                        div=products.review
 
 
 

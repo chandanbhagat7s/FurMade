@@ -1,25 +1,26 @@
 
 extends base
 block content
-
-  #carouselExampleDark.carousel.carousel-dark.slide(data-bs-ride="carousel")
-    .carousel-indicators
+  .bg-light.bg-gradient
+  #carouselExampleDark.carousel.carousel-dark.slide(data-bs-ride="carousel" )
+    .carousel-indicators.shadow-lg.rounded
       button(type="button", data-bs-target="#carouselExampleDark", data-bs-slide-to="0", class="active", aria-current="true", aria-label="Slide 1")
       button(type="button", data-bs-target="#carouselExampleDark", data-bs-slide-to="1", aria-label="Slide 2")
       button(type="button", data-bs-target="#carouselExampleDark", data-bs-slide-to="2", aria-label="Slide 3")
     .carousel-inner
-      .carousel-item.active(data-bs-interval="10000")
-        img.d-block.w-100(src="...", alt="...")
+      .carousel-item.active(data-bs-interval="4000")
+        
+        img.d-block.w-100(src=`/images/product/${products.Images[0]}`, alt="image")
         .carousel-caption.d-none.d-md-block
           h5 First slide label
           p Some representative placeholder content for the first slide.
-      .carousel-item(data-bs-interval="2000")
-        img.d-block.w-100(src="...", alt="...")
+      .carousel-item(data-bs-interval="4000")
+        img.d-block.w-100(src=`/images/product/${products.Images[1]}`, alt="image")
         .carousel-caption.d-none.d-md-block
           h5 Second slide label
           p Some representative placeholder content for the second slide.
       .carousel-item
-        img.d-block.w-100(src="...", alt="...")
+        img.d-block.w-100(src=`/images/product/${products.Images[2]}`, alt="image")
         .carousel-caption.d-none.d-md-block
           h5 Third slide label
           p Some representative placeholder content for the third slide.
@@ -30,10 +31,62 @@ block content
       span.carousel-control-next-icon(aria-hidden="true")
       span.visually-hidden Next
 
+  .row.my-5.text-center
+    .col-sm-6
+      .card
+        .card-body.text-center
+          h5.card-title.display-2.fw-bold Price 
+          p.card-text.display-3= `₹ ${products.price}`
+          a.btn.btn-outline-success(href='#') Buy Now !
+          span  
+          a.btn.btn-outline-dark(href='#') Add to cart
+    .col-sm-6
+      .card
+        .card-body
+          h5.card-title.display-2 Details
+          p.card-text.fw-bold= `Available in ${products.colors} colors` 
+          p.card-text.fw-bold= `Warranty of ${products.warranty} ` 
+          p.card-text.fw-bold= `Dimensions :  length - ${products.dim[0]} breadth - ${products.dim[1]} height-  ${products.dim[2]}` 
+          
+
+  .row.my-2.text-center
+    .col-sm-6
+      .card.bg-dark.text-white
+        .card-body
+          h5.card-title Features
+          for f in products.features
+            p=f
+           
+          
+    .col-sm-6
+      .card.bg-dark.text-white
+        .card-body
+          h5.card-title.dispaly-2 Somthing More
+          p=products.summery 
+    
+
+  
+
+        
+      
+  div.text-center.display-3 REVIEWS
+  .container.d-flex.justify-content-center.align-items-center.my-5
+    .row.bg-dark.bg-gradient.text-center.align-content-center
+      for r in products.review
+        .col.my-5
+          .card(style='width: 18rem;')
+            .card-body
+              h5.card-title= r.review
+              h6.card-subtitle.mb-2.text-muted= r.byUser.name
+              p.card-text= r.createdAt 
 
 
 
 
+
+
+
+ 
 
 
 

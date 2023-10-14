@@ -15,6 +15,19 @@ const createTokenSendRes = (id, res, statusCode, message) => {
     let token = jwt.sign({ id }, process.env.JWT_SECRET_KEY, {
         expiresIn: process.env.JWT_EXPIRIR_IN
     });
+    let cookieOptions = {
+        expires: new Date(
+            Date.now() + 90 * 24 * 60 * 60 * 1000
+        ),
+
+        secure: false,
+        httpOnly: true
+    };
+    if (process.env.NODE_ENV == 'production') {
+
+        cookieOptions.secure = true
+    }
+    res.cookie('jwt', token, cookieOptions);
     // we will set cookies 
     res.status(statusCode).json({
         status: "success",
@@ -50,6 +63,17 @@ exports.login = catchAsync(async (req, res, next) => {
 
 })
 
+
+
+exports.logout = function (req, res) {
+    console.log("came");
+    res.cookie('jwt', 'logout', {
+        expires: new Date(Date.now() + 10 * 1000),
+        httpOnly: true
+    })
+
+    res.status(200).json({ status: 'success' })
+}
 
 
 exports.forgotPassword = catchAsync(async (req, res, next) => {

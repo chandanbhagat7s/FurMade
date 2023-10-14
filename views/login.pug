@@ -1,0 +1,42 @@
+
+extends base
+block content
+
+    .card.mb-3(style="max-width: 1000px").m-auto
+        .row.no-gutters.mx-2
+            .col-md-4.my-auto
+                img.card-img(src="/images/product/bed-1.jpg", alt="#")
+            .col-md-8
+                .card-body.p-2
+                    h1.card-title Login Now!
+                form.login
+                    .form-group
+                        label(for="exampleInputEmail1") Email address
+                        input(type="email", id='login-email' class="form-control",  aria-describedby="emailHelp", placeholder="Enter email")
+                        small.form-text.text-muted We'll never share your email with anyone else.
+                    .form-group.my-2
+                        label(for="exampleInputPassword1") Password
+                        input(type="password", id= 'current-password' class="form-control", placeholder="Password")
+                    
+                    button(type="submit", class="btn  btn-outline-dark my-2") Login
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

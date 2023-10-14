@@ -116,6 +116,8 @@ productSchema.pre('save', function (next) {
 });
 
 
+
+
 // creating model of that schema
 const product = mongoose.model('product', productSchema)
 

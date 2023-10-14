@@ -3,7 +3,7 @@
 const path = require('path')
 const express = require('express');
 const morgan = require('morgan');
-const mongoose = require('mongoose');
+
 
 const globalErrorHandler = require('./Controllers/errorController');
 // for appError
@@ -15,6 +15,8 @@ const productRoutes = require('./Routes/productRoutes');
 const userRoutes = require('./Routes/userRoutes');
 const reviewRoute = require('./Routes/reviewRoute');
 const viewRoute = require('./Routes/viewRoute');
+const cookieParser = require('cookie-parser');
+
 
 // Start express app
 const app = express();
@@ -26,6 +28,9 @@ app.use(express.json())
 console.log(process.env.NODE_ENV);
 
 app.use(morgan('dev'))
+
+
+app.use(cookieParser())
 
 // for renderring pages 
 app.set('view engine', 'pug')

@@ -97,6 +97,7 @@ exports.getProductById = catchAsync(async (req, res, next) => {
         path: 'review',
         select: '-__v -createdAt'
     })
+    console.log("product is : ..................... ", product);
 
     if (!product) {
         console.log("entred");
