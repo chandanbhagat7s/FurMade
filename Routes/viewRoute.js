@@ -6,6 +6,7 @@ const viewRoute = require('./../Controllers/viewController')
 
 
 Router.get('/', viewRoute.Home)
+Router.get('/login', viewRoute.Login)
 Router.get('/productss/:slug', viewRoute.getProduct)
 // Router.get('/',)
 

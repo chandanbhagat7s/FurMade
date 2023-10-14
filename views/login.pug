@@ -1,0 +1,50 @@
+
+extends base
+block content
+
+    form
+      .form-row
+        .col-md-4.mb-3
+          label(for='validationDefault01') First name
+          input.form-control(type='text', id='validationDefault01', placeholder='First name', value='Mark',required)
+        .col-md-4.mb-3
+          label(for='validationDefault02') Last name
+          input.form-control(type='text', id='validationDefault02', placeholder='Last name', value='Otto',  required)
+        .col-md-4.mb-3
+          label(for='validationDefaultUsername') Username
+          .input-group
+            .input-group-prepend
+              span.input-group-text#inputGroupPrepend2 @
+            input.form-control(type='text', id='validationDefaultUsername', placeholder='Username', aria-   describedby='inputGroupPrepend2', required)
+      .form-row
+        .col-md-6.mb-3
+          label(for='validationDefault03') City
+          input.form-control(type='text', id='validationDefault03', placeholder='City', required)
+        .col-md-3.mb-3
+          label(for='validationDefault04') State
+          input.form-control(type='text', id='validationDefault04', placeholder='State', required)
+        .col-md-3.mb-3
+          label(for='validationDefault05') Zip
+          input.form-control(type='text', id='validationDefault05', placeholder='Zip', required)
+      .form-group
+        .form-check
+          input.form-check-input(type='checkbox', value='', id='invalidCheck2', required)
+          label.form-check-label(for='invalidCheck2') Agree to terms and conditions
+      button.btn.btn-primary(type='submit') Submit form
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -8,10 +8,12 @@ const reviewSchema = new mongoose.Schema({
     },
     ofProduct: {
         type: mongoose.mongo.ObjectId,
+        ref: 'Product',
         required: [true, 'review must belong to specific Product']
     },
     byUser: {
         type: mongoose.mongo.ObjectId,
+        ref: 'User',
         required: [true, 'review must belong to specific user']
     },
     rating: {
@@ -24,6 +26,15 @@ const reviewSchema = new mongoose.Schema({
     }
 
 
+})
+
+reviewSchema.pre(/^find/, function (next) {
+
+    this.populate({
+        path: 'byUser',
+        select: 'name -_id createdAt'
+    })
+    next()
 })
 
 
