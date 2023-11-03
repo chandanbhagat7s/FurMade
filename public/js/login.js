@@ -37,7 +37,8 @@ export const logout = async () => {
         console.log(data);
         if (data.status === 'success') {
             alertt('success', "you are logged out")
-            location.reload(true)
+            location.assign('/')
+            // location.reload(true)
         }
     } catch (error) {
         console.log("the error is", error);

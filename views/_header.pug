@@ -13,8 +13,8 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
                     a.nav-link(href="#") About 
             if user  
                 button.btn.btn-outline-dark.logout Logout
-                a.btn 
-                    img(src="images/product/bed-1.jpg", class="img-fluid  rounded-circle", alt="..." style="max-width: 50px;")
+                a.btn(href='/me') 
+                    img(src="../images/product/bed-1.jpg", class="img-fluid  rounded-circle", alt="..." style="max-width: 50px;")
                     p.card-text=user.name.split(' ')[0]
 
 

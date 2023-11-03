@@ -20,6 +20,13 @@ const userSchema = new mongoose.Schema({
         validate: [validator.isEmail, 'provide the valid email address']
 
     },
+    mobile: {
+        type: Number,
+        required: [true, "user Mobile number to be provided"],
+        unique: true,
+        // validate: [, 'provide the valid email address']
+
+    },
     photo: String,
     password: {
         type: String,
@@ -41,6 +48,25 @@ const userSchema = new mongoose.Schema({
     role: {
         type: String,
         default: 'USER'
+    },
+    userCart: [
+
+        {
+            type: mongoose.Schema.ObjectId,
+            ref: 'Product',
+            required: [true, 'review must belong to specific Product'],
+            // unique: true
+        }
+
+    ],
+    buyedProduct: {
+
+
+        type: mongoose.mongo.ObjectId,
+        ref: 'Product',
+        required: [true, 'review must belong to specific Product']
+
+
     },
     passwordChangedAt: Date,
     passwordResetToken: String,
@@ -72,6 +98,25 @@ userSchema.pre('save', function (next) {
     this.passwordChangedAt = Date.now() + 1000;
     next()
 })
+
+// userSchema.pre(/^find/, function (next) {
+//     // this.populated('userCart')
+//     this.populate({
+//         path: 'userCart'
+//     })
+//     next()
+// })
+
+// reviewSchema.pre(/^find/, function (next) {
+
+//     this.populate({
+//         path: 'byUser',
+//         select: 'name email '
+//     })
+
+
+//     next()
+// })
 
 userSchema.methods.correctPass = async function (inputpassword, password) {
     return await bcrypt.compare(inputpassword, password)

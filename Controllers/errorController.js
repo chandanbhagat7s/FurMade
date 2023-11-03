@@ -18,33 +18,58 @@ const validationErrorHandlerDB = (err) => {
     return new appError(errText.join('. '), 400)
 }
 
-const callProdError = (err, res) => {
-    if (err.isOperational) {
-        err.statusCode = err.statusCode || 500;
-        err.status = err.status || 'error'
-        res.status(err.statusCode).json({
-            status: err.status,
-            msg: err.message
-        })
-    } else {
-        res.status(500).json({
+const callProdError = (err, req, res) => {
+    if (req.originalUrl.startsWith('/api')) {
+        if (err.isOperational) {
+            err.statusCode = err.statusCode || 500;
+            err.status = err.status || 'error'
+            return res.status(err.statusCode).json({
+                status: err.status,
+                msg: err.message
+            })
+        }
+        return res.status(500).json({
             status: 'error',
             msg: 'something went wrong'
         })
+
     }
+    if (err.isOperational) {
+        err.statusCode = err.statusCode || 500;
+        err.status = err.status || 'error'
+        return res.status(err.statusCode).render('errorTemplate', {
+            title: "error",
+            msg: err.message
+        })
+    }
+    return res.status(err.statusCode).render('errorTemplate', {
+        title: "error",
+        msg: err.message
+    })
+
 }
 
 
 
-const callDevError = (err, res) => {
-    err.statusCode = err.statusCode || 500;
-    err.status = err.status || 'error'
-    res.status(err.statusCode).json({
-        status: err.status,
-        error: err,
-        msg: err.message,
-        stack: err.stack
-    })
+const callDevError = (err, req, res) => {
+    if (req.originalUrl.startsWith('/api')) {
+        err.statusCode = err.statusCode || 500;
+        err.status = err.status || 'error'
+        res.status(err.statusCode).json({
+            status: err.status,
+            error: err,
+            msg: err.message,
+            stack: err.stack
+        })
+    }
+    else {
+        err.statusCode = err.statusCode || 500;
+        err.status = err.status || 'error'
+        res.status(err.statusCode).render('errorTemplate', {
+            title: '404 Not Found !',
+            msg: err.message
+        })
+    }
 }
 
 
@@ -56,22 +81,22 @@ module.exports = (err, req, res, next) => {
 
     // distigushing between env..
     if (process.env.NODE_ENV === 'production') {
-        let error = { ...err }
+
         if (err.name == 'CastError') {
-            error = castErrorHandlerDB(error);
+            error = castErrorHandlerDB(err);
         }
 
         else if (err.code == 11000) {
-            error = dublicateErrorHandlerDB(error)
+            error = dublicateErrorHandlerDB(err)
         }
         else if (err.name == 'ValidationError') {
-            error = validationErrorHandlerDB(error)
+            error = validationErrorHandlerDB(err)
         }
 
 
-        callProdError(error, res)
+        callProdError(err, req, res)
     } else {
-        callDevError(err, res);
+        callDevError(err, req, res);
     }
 
 

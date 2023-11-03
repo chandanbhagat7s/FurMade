@@ -21,6 +21,7 @@ rout.post('/signup', authController.signUp)
 rout.post('/login', authController.login)
 rout.post('/forgotPassword', authController.forgotPassword)
 // rout.patch('/updateMe', userController.updateMe);
+rout.patch('/addToCart', protect.protectRoute, userController.addTocart)
 rout.patch('/resetPassword/:token', authController.resetPassword)
 
 

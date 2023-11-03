@@ -3,16 +3,17 @@ const express = require('express');
 const Router = express.Router()
 
 const viewRoute = require('./../Controllers/viewController');
-const { isLogedIn } = require('../Middleware/protect');
+const { isLogedIn, protectRoute } = require('../Middleware/protect');
 
-console.log("runnnnn");
 
-Router.use(isLogedIn)
 
-Router.get('/', viewRoute.Home)
-Router.get('/login', viewRoute.Login)
-Router.get('/signup', viewRoute.Signup)
-Router.get('/productss/:slug', viewRoute.getProduct)
+// Router.use()
+
+Router.get('/', isLogedIn, viewRoute.Home)
+Router.get('/me', protectRoute, viewRoute.me)
+Router.get('/login', isLogedIn, viewRoute.Login)
+Router.get('/signup', isLogedIn, viewRoute.Signup)
+Router.get('/productss/:slug', isLogedIn, viewRoute.getProduct)
 // Router.get('/',)
 
 module.exports = Router;

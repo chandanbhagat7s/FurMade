@@ -1,0 +1,40 @@
+extends base
+block content
+
+    .card.mb-3.m-auto(style="max-width: 540px")
+        .row.g-0
+            .col-md-4
+                img.img-fluid.rounded-start(src="/images/product/bed-1.jpg", alt="...")
+            .col-md-8
+                .card-body
+                    h5.card-title= user.name.toUpperCase()
+                    p.card-text= `Mobile Number : 7038309471`
+                    p.card-text= `email : ${user.email}`
+                    p.card-text
+                        button.btn.btn-outline-dark Edit information
+                        
+
+            //- .col-md-4
+                img.img-fluid.rounded-start(src="/images/product/bed-1.jpg", alt="...")
+    .card-group
+        .card
+            .card-body
+                h5.card-title YOUR CART
+                    .container.my-3
+                        .row.row-cols-2.justify-content-center
+                            each product in user.userCart
+                                .col.card.mb-2(style="max-width: 540px;")
+                                    .row.g-0 
+                                        .col-md-4
+                                            img.img-fluid.rounded-start(src=`images/product/${product.coverImage}`, alt=`${product.productName} image`)
+                                        .col-md-8
+                                            .card-body
+                                                h5.card-title=product.productName
+                                                p.card-text=` Price : ₹ ${product.price}` 
+
+                                                a.btn.btn-outline-success(href=`productss/${product.slug}`  ) Details
+                                                span   
+                                                a.btn.btn-outline-dark(href=`#`  ) Remove from cart
+                                                //- div=products.review
+                    
+

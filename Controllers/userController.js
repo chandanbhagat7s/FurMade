@@ -1,6 +1,7 @@
 
 // requring the model for crud 
 
+const product = require("../Models/ProductSchma");
 const User = require("../Models/UserSchema");
 const app = require("../app");
 const appError = require("../utils/appError");
@@ -82,6 +83,28 @@ exports.updateUser = factory.updateOne(User)
 
 
 
+
+// adding to cart
+exports.addTocart = catchAsync(async (req, res, next) => {
+
+    const item = await product.findOne({ productName: req.body.productName })
+    // console.log(item);
+    if (!item) {
+        return next(new appError('falied to find the product', 404))
+    }
+    // console.log(item._id);
+    const addItemID = await User.findByIdAndUpdate(req.userE._id, {
+        $push: { userCart: item._id }
+    }, { new: true })
+
+    // console.log(addItemID);
+
+    res.status(200).json({
+        status: 'success'
+
+    })
+
+})
 
 
 

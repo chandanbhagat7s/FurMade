@@ -97,10 +97,10 @@ exports.getProductById = catchAsync(async (req, res, next) => {
         path: 'review',
         select: '-__v -createdAt'
     })
-    console.log("product is : ..................... ", product);
+    // console.log("product is : ..................... ", product);
 
     if (!product) {
-        console.log("entred");
+        // console.log("entred");
         return next(new appError('unable to find id ', 404))
     }
     res.status(200).json({
