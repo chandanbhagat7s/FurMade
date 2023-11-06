@@ -68,7 +68,7 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: true,
         minlength: [20, "must have atleast 20 character "],
-        maxlength: [450, "about cannot exceed 150 character"]
+        // maxlength: [450, "about cannot exceed 150 character"]
     },
     features: {
         type: [String],
@@ -84,7 +84,7 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: true,
         minlength: [40, "must have atleast 30 character "],
-        maxlength: [450, "about cannot exceed 150 character"]
+        // maxlength: [450, "about cannot exceed 150 character"]
     },
     dateAdded: {
         type: Date,
@@ -93,6 +93,10 @@ const productSchema = new mongoose.Schema({
 
     slug: {
         type: String
+    },
+    hidden: {
+        type: Boolean,
+        default: false
     }
 
 },
@@ -116,6 +120,21 @@ productSchema.pre('save', function (next) {
 });
 
 
+
+productSchema.pre(/^find/, function (next) {
+    // console.log(this.opti);
+    if (this.options.disableMiddlewares) {
+        return next();
+    }
+    this.find({ hidden: { $ne: true } })
+    next();
+});
+
+// productSchema.methods.hideItem = function (this) {
+//     // this.
+//     this.hidden =true;
+
+// }
 
 
 // creating model of that schema

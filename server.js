@@ -9,6 +9,7 @@ let PORT = process.env.PORT;
 
 process.on('uncaughtException', err => {
     console.log(err.name, err.message);
+    console.log(err);
     // now we need to close the server and exit the process 
     console.log("uncaught Exception SHUDDING DOWN");
 

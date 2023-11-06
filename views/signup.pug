@@ -8,21 +8,21 @@ block content
             .col-md-8
                 .card-body.p-2
                     h1.card-title Signup Now!
-                form
+                form.signupPage
                     .form-group
                         label(for="exampleInputEmail1") Enter name
-                        input(type="email", class="form-control", id="exampleInputEmail1", aria-describedby="emailHelp", placeholder="Enter name")
+                        input(type="text", class="form-control signup-name", id="exampleInputEmail1", aria-describedby="emailHelp", placeholder="Enter name")
                         label(for="exampleInputEmail1") Email address
-                        input(type="email", class="form-control", id="exampleInputEmail1", aria-describedby="emailHelp", placeholder="Enter email")
+                        input(type="email", class="form-control signup-email", id="exampleInputEmail1", aria-describedby="emailHelp", placeholder="Enter email")
                         small.form-text.text-muted We'll never share your email with anyone else.
                         //- .form-group
                         br
                         label(for="exampleInputEmail1") Mobile Number
-                        input(type="number", class="form-control", id="exampleInputEmail1", aria-describedby="emailHelp", placeholder="Enter Phone Number")
+                        input(type="number", class="form-control signup-number", id="exampleInputEmail1", aria-describedby="emailHelp", placeholder="Enter Phone Number")
                     .form-group.my-2
                         label(for="exampleInputPassword1") Password
-                        input(type="password", class="form-control", id="exampleInputPassword1", placeholder="Password")
+                        input(type="password", class="form-control signup-password", id="exampleInputPassword1", placeholder="Password")
                         label(for="exampleInputPassword1") Password Conform
-                        input(type="password", class="form-control", id="exampleInputPassword1", placeholder="Password Conform")
+                        input(type="password", class="form-control signup-cnfPassword", id="exampleInputPassword1", placeholder="Password Conform")
                     
                     button(type="submit", class="btn  btn-outline-dark my-2") Signup !

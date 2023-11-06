@@ -16,25 +16,47 @@ block content
 
             //- .col-md-4
                 img.img-fluid.rounded-start(src="/images/product/bed-1.jpg", alt="...")
-    .card-group
-        .card
-            .card-body
-                h5.card-title YOUR CART
-                    .container.my-3
-                        .row.row-cols-2.justify-content-center
-                            each product in user.userCart
-                                .col.card.mb-2(style="max-width: 540px;")
-                                    .row.g-0 
-                                        .col-md-4
-                                            img.img-fluid.rounded-start(src=`images/product/${product.coverImage}`, alt=`${product.productName} image`)
-                                        .col-md-8
-                                            .card-body
-                                                h5.card-title=product.productName
-                                                p.card-text=` Price : ₹ ${product.price}` 
+    if user.role == 'USER'
+        .card-group
+            .card
+                .card-body
+                    h5.card-title YOUR CART
+                        .container.my-3
+                            .row.row-cols-2.justify-content-center
+                                if (user.userCart.length ==0)
+                                    div it's Empty , add items to cart to be listed ....
 
-                                                a.btn.btn-outline-success(href=`productss/${product.slug}`  ) Details
-                                                span   
-                                                a.btn.btn-outline-dark(href=`#`  ) Remove from cart
-                                                //- div=products.review
-                    
+                                else
+                                    each product in user.userCart
+                                        .col.card.mb-2(style="max-width: 540px;")
+                                            .row.g-0 
+                                                .col-md-4
+                                                    img.img-fluid.rounded-start(src=`images/product/${product.coverImage}`, alt=`${product.productName} image`)
+                                                .col-md-8
+                                                    .card-body
+                                                        h5.card-title=product.productName
+                                                        p.card-text=` Price : ₹ ${product.price}` 
+
+                                                        a.btn.btn-outline-success(href=`productss/${product.slug}`  ) Details
+                                                        span   
+                                                        button.btn.btn-outline-dark.removeFromCart Remove from cart
+                                                        //- div=products.review
+    if user.role == 'ADMIN'
+        p.text add product        
+            span               
+            a.btn.btn-outline-success(href=`addProduct`  ) Add product
+        p.text Delete product        
+            span               
+            a.btn.btn-outline-danger(href=`deleteProduct`  ) Delete product
+        p.text Hide product        
+            span               
+            a.btn.btn-outline-secondary(href=`hideProduct`  ) hide product
+        p.text edit  product        
+            span               
+            a.btn.btn-outline-info(href=`editProduct`  ) edit product
+
+        p.text unhide  product        
+            span               
+            a.btn.btn-outline-primary(href=`getAllHiddenProductList`  ) unhide products
+         
 

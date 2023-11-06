@@ -107,6 +107,29 @@ exports.addTocart = catchAsync(async (req, res, next) => {
 })
 
 
+// remove from cart
+exports.removeFromCart = catchAsync(async (req, res, next) => {
+    // console.log(req.body);
+    const item = await product.findOne({ productName: req.body.productName })
+    // console.log(item);
+    if (!item) {
+        return next(new appError('falied to find the product', 404))
+    }
+    // console.log(item._id);
+    const addItemID = await User.findByIdAndUpdate(req.userE._id, {
+        $pull: { userCart: item._id }
+    }, { new: true })
+
+    // console.log(addItemID);
+
+    res.status(200).json({
+        status: 'success'
+
+    })
+
+})
+
+
 
 
 

@@ -78,6 +78,7 @@ const callDevError = (err, req, res) => {
 
 
 module.exports = (err, req, res, next) => {
+    // console.log(err);
 
     // distigushing between env..
     if (process.env.NODE_ENV === 'production') {

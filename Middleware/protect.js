@@ -35,7 +35,7 @@ exports.isLogedIn = async (req, res, next) => {
             // console.log(currentUser);
             res.locals.user = currentUser;
             // req.userE = currentUser;
-            console.log("finnnnnnnn");
+            // console.log("finnnnnnnn");
             return next();
 
         } catch (error) {
@@ -50,13 +50,17 @@ exports.isLogedIn = async (req, res, next) => {
 
 
 
+
+
+
+
 // this is the middleware for just rendering the pages difffrent for if user is logged 
 exports.protectRoute = runAsync(async (req, res, next) => {
 
     // we need to see weather the user is loged in or not 
     let token;
     // console.log(token);
-    console.log("cookies", req.cookies.jwt);
+    // console.log("cookies", req.cookies.jwt);
     if (req.cookies) {
         token = req.cookies.jwt
     }
@@ -69,7 +73,7 @@ exports.protectRoute = runAsync(async (req, res, next) => {
     }
 
 
-    console.log(token);
+    // console.log(token);
 
     // we need to get the id from the token which we have encoded 
     let decode = jwt.decode(token, process.env.JWT_SECRET_KEY)
@@ -77,7 +81,7 @@ exports.protectRoute = runAsync(async (req, res, next) => {
         path: 'userCart',
         select: 'productName price coverImage slug'
     });
-    console.log(currentUser);
+    // console.log(currentUser);
 
     if (!currentUser) {
         return next(new appError("user do not exist please register !!", 400))

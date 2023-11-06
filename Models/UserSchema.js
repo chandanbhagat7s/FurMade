@@ -54,7 +54,7 @@ const userSchema = new mongoose.Schema({
         {
             type: mongoose.Schema.ObjectId,
             ref: 'Product',
-            required: [true, 'review must belong to specific Product'],
+            // required: [true, 'review must belong to specific Product'],
             // unique: true
         }
 
@@ -64,7 +64,7 @@ const userSchema = new mongoose.Schema({
 
         type: mongoose.mongo.ObjectId,
         ref: 'Product',
-        required: [true, 'review must belong to specific Product']
+        // required: [true, 'review must belong to specific Product']
 
 
     },

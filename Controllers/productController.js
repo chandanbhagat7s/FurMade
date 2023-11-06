@@ -1,15 +1,48 @@
 // bringig model for crud operations in db
 const Product = require('./../Models/ProductSchma');
-
+// multer oackage for file uploads
+const multer = require('multer')
 
 //feature API
 const Apifeature = require('../utils/apiFeature');
 const catchAsync = require('../utils/catchAsync');
 const appError = require('../utils/appError');
 
+// create storage
+const multerStorage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'public/img/productImages')
+    },
+    filename: (req, file, cb) => {
+        const ext = file.mimetype.split('/')[1]
+        cb(null, `${req.body.productName}_cover.${ext}`)
+    }
+})
+// create filterObject
+const multerFilter = (req, file, cb) => {
+    if (file.mimetype.startsWith('coverImage')) {
+        cb(null, true)
+    } else {
+        cb(new appError('please upload only image files', 400), false)
+
+    }
+}
+
+// destination(for saving files) of multer package 
+const uploads = multer(
+    {
+        storage: multerStorage,
+        fileFilter: multerFilter
+    }
+)
+
+// middleware for uploding images
+exports.uploadImages = uploads.single('photo')
+
 // for create new product
 exports.createNewProduct = catchAsync(async (req, res, next) => {
-
+    console.log(req.body);
+    console.log(req.file);
     const newProduct = await Product.create({
         ...req.body
     })
@@ -116,6 +149,29 @@ exports.getProductById = catchAsync(async (req, res, next) => {
 })
 
 
+// get product by name
+exports.getProductByName = catchAsync(async (req, res, next) => {
+    console.log(req.params);
+    const product = await Product.find({ productName: req.params.name })
+    // console.log("product is : ..................... ", product);
+
+    if (!product) {
+        // console.log("entred");
+        return next(new appError('unable to find id ', 404))
+    }
+    res.status(200).json({
+        status: 'success',
+        data: {
+            product
+        }
+    })
+
+
+
+
+})
+
+
 
 exports.getProductByIdAndUpdate = catchAsync(async (req, res, next) => {
     const product = await Product.findByIdAndUpdate(req.params.id, {
@@ -153,3 +209,63 @@ exports.getProductByIdAndDelete = catchAsync(async (req, res, next) => {
 
 
 })
+
+
+// get product by name
+exports.getProductByNameandHide = catchAsync(async (req, res, next) => {
+    console.log(req.params);
+    const product = await Product.find({ productName: req.params.name })
+
+
+    if (!product) {
+        // console.log("entred");
+        return next(new appError('unable to find id ', 404))
+    }
+    product[0].hidden = true;
+
+    await product[0].save();
+
+
+    res.status(200).json({
+        status: 'success',
+
+    })
+
+
+
+
+})
+
+
+
+
+exports.unhideHiddenProduct = catchAsync(async (req, res, next) => {
+    console.log(req.params);
+    let options = {
+        disableMiddlewares: true, // can be checked in middleware with this.options.disableMiddlewares
+    };
+    const product = await Product.find({ productName: req.params.name }).setOptions(options)
+
+
+    if (!product) {
+        // console.log("entred");
+        return next(new appError('unable to find product ', 404))
+    }
+    console.log(product);
+    product[0].hidden = false;
+
+    await product[0].save();
+
+
+    res.status(200).json({
+        status: 'success',
+
+    })
+
+
+
+
+})
+
+
+

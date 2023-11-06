@@ -15,20 +15,10 @@ exports.Home = runAsync(async (req, res, next) => {
 })
 
 
-exports.me = runAsync(async (req, res, next) => {
-    // const user = await User.findById(userE.id);
-    // console.log(products);
-    console.log("came");
 
-    res.status(200).render('account', {
-        title: 'name',
-
-    })
-})
 
 
 exports.getProduct = runAsync(async (req, res, next) => {
-    // console.log("params is ", req.params);
     const products = await Product.findOne({ slug: req.params.slug }).populate('review');
 
 
@@ -36,8 +26,7 @@ exports.getProduct = runAsync(async (req, res, next) => {
         return next(new appError("no product found with this name", 404));
     }
 
-    console.log(products);
-    console.log("came");
+
 
     res.status(200).render('each', {
         title: 'sofa',
@@ -67,6 +56,60 @@ exports.Signup = runAsync(async (req, res, next) => {
 
 
 
+
+
+exports.addNewProduct = runAsync(async (req, res, next) => {
+
+
+    res.status(200).render('addProduct', {
+        title: 'Add Product 😊'
+    })
+})
+
+
+
+exports.deleteProduct = runAsync(async (req, res, next) => {
+
+
+    res.status(200).render('deleteProduct', {
+        title: 'delete Product 😒'
+    })
+})
+
+exports.me = runAsync(async (req, res, next) => {
+
+
+    res.status(200).render('account', {
+        title: 'Profile'
+    })
+})
+
+
+exports.hideProduct = runAsync(async (req, res, next) => {
+
+
+    res.status(200).render('hideProduct', {
+        title: 'hide Product 🫥'
+    })
+})
+
+
+exports.getAllHiddenProduct = runAsync(async (req, res, next) => {
+    // const products = await Product.findOne({ slug: req.params.slug }).populate('review');
+
+    let options = {
+        disableMiddlewares: true, // can be checked in middleware with this.options.disableMiddlewares
+    };
+    const products = await Product.find({ hidden: true }).setOptions(options)
+
+
+
+
+    res.status(200).render('adminProd', {
+        title: 'Hidden Products..💥',
+        products
+    })
+})
 
 
 

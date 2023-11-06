@@ -1,0 +1,134 @@
+extends base
+block content
+    div#main-wrapper.container
+        div.row.justify-content-center
+            div.col-xl-10
+                div.card.border-0
+                    div.card-body.p-0
+                        div.row.no-gutters
+                            div.col-lg-6
+                                div.p-5
+                                    h3.h4.font-weight-bold.text-theme ADD PRODUCT
+                                    h6.h5.mb-0 Welcome back!
+                                    p.text-muted.mt-2.mb-5 Enter details of product to be added
+                                    form.addProduct
+                                        div.form-group.mb-3
+                                            label(for="productName") Product Name
+                                                span.text-danger  *
+                                            input#productName.form-control(type="text")
+
+                                        div.form-group.mb-5
+                                            label(for="price") Price (in Rs.)
+                                                span.text-danger  *
+                                            input#price.form-control(type="number")
+                                            
+                                        div.form-group
+                                            label(for="type") Type (Sofa,Bed,Table ...)
+                                                span.text-danger  *
+                                            input#type.form-control(type="text")
+
+                                        div.form-group.mb-3
+                                            label(for="deliveredIn") Will be delivered in (10days,5days...)
+                                                span.text-danger  *
+                                            input#deliveredIn.form-control(type="text")
+
+                                        div.form-group
+                                            label(for="Discription") Discription [40 to 100 words]
+                                                span.text-danger  *
+                                            input#Discription.form-control(type="text")
+
+                                        div.form-group.mb-3
+                                            label(for="colors") colors [red,blue...]
+                                                span.text-danger  *
+                                            input#colors.form-control(type="text")
+                                            
+                                        div.form-group.mb-3
+                                            label(for="dileveryCharges") Dilevery Charges (per KM)
+                                                span.text-danger  *
+                                            input#dileveryCharges.form-control(type="Number")
+
+                                        div.form-group.mb-3 Payment Option available
+                                            span.text-danger  *
+                                            div.form-check.mb-3 
+                                            
+                                                input.form-check-input(type="radio", name="Online", id="paymentMeth1" value="Online")
+                                                label.form-check-label(for="flexRadioDefault1") Online
+                                            div.form-check
+                                                input.form-check-input(type="radio", name="COD", id="paymentMeth2" value="COD")
+                                                label.form-check-label(for="flexRadioDefault2") Cash On Delivery
+
+
+                                        div.form-group
+                                            label(for="warranty") Warranty
+                                                span.text-danger  *
+                                            input#warranty.form-control(type="text")
+
+                                        div.form-group.mb-3
+                                            label(for="coverImage") coverImage 
+                                                span.text-danger  *
+                                            input#coverImage.form-control.form-control.bg-dark.text-white(type="file") 
+                                            
+                                        div.form-group
+                                            label(for="summery") Summery
+                                                span.text-danger  *
+                                            input#summery.form-control(type="text")
+
+                                        div.form-group
+                                            label(for="about") About
+                                                span.text-danger  *
+                                            input#about.form-control(type="text")
+
+
+
+
+                                        div.form-group.mb-3
+                                            label(for="imageFile1") Images
+                                                span.text-danger  *
+                                            input#imageFile1.form-control.bg-dark.text-white.mb-3(type="file") 
+                                            input#imageFile2.form-control.bg-dark.text-white.mb-3(type="file")
+                                            input#imageFile3.form-control.bg-dark.text-white.mb-3(type="file")
+
+
+                                        div.form-group.mb-3
+                                            label(for="feature1") Features
+                                                span.text-danger  *
+                                            input#feature1.form-control.mb-2(type="text") 
+                                            input#feature2.form-control.mb-2(type="text")
+                                            input#feature3.form-control.mb-2(type="text")
+                                            input#feature4.form-control.mb-2(type="text")
+                                            input#feature5.form-control.mb-2(type="text")
+
+
+
+                                        div.form-group.mb-3 Dimentions
+                                            span.text-danger  *
+                                            br
+                                            label.form-check-label(for="dim1") Length  (m)
+                                            input#dim1.form-control.mb-2(type="number") 
+
+                                            label.form-check-label(for="dim2") Breadth (m)
+                                            input#dim2.form-control.mb-2(type="number")
+
+                                            label.form-check-label(for="dim3") Width (m)
+                                            input#dim3.form-control.mb-2(type="number")
+
+
+                                        div.form-group.mt-3 Replacement Timeline
+                                            span.text-danger  *
+                                            div.form-check.mb-3 
+                                                input.form-check-input(type="radio", name="days", id="flexRadioDefault1" value="5 days" )
+                                                label.form-check-label(for="flexRadioDefault1") 5 days
+                                            div.form-check.mb-3
+                                                input.form-check-input(type="radio", name="days", id="flexRadioDefault2" value="7 days")
+                                                label.form-check-label(for="flexRadioDefault2") 7 days
+                                            div.form-check.mb-3
+                                                input.form-check-input(type="radio", name="days", id="flexRadioDefault3" value="0 days")
+                                                label.form-check-label(for="flexRadioDefault2") 0 days
+                                            br
+                                        button(type="submit", class="btn  btn-outline-dark my-2 ") add !
+
+
+
+
+
+                                        
