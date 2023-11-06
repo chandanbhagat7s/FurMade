@@ -43,15 +43,6 @@ exports.Login = runAsync(async (req, res, next) => {
 })
 
 
-exports.Signup = runAsync(async (req, res, next) => {
-
-
-    res.status(200).render('signup', {
-        title: 'Signup!'
-    })
-})
-
-
 
 
 

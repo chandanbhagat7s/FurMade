@@ -21,6 +21,9 @@ Router.get('/addProduct', protectRoute, giveAccess('ADMIN'), viewRoute.addNewPro
 Router.get('/deleteProduct', protectRoute, giveAccess('ADMIN'), viewRoute.deleteProduct)
 Router.get('/hideProduct', protectRoute, giveAccess('ADMIN'), viewRoute.hideProduct)
 Router.get('/getAllHiddenProductList', protectRoute, giveAccess('ADMIN'), viewRoute.getAllHiddenProduct)
+Router.get('/', viewRoute.Home)
+Router.get('/productss/:slug', viewRoute.getProduct)
+// Router.get('/',)
 
 module.exports = Router;
 

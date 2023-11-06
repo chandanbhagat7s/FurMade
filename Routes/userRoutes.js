@@ -17,6 +17,7 @@ const User = require('../Models/UserSchema');
 
 rout.get('/logout', authController.logout)
 // rout.get('/:id', factory.getOne(User))
+rout.get('/:id', factory.getOne(User))
 rout.post('/signup', authController.signUp)
 rout.post('/login', authController.login)
 rout.post('/forgotPassword', authController.forgotPassword)
