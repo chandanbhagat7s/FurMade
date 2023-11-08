@@ -114,12 +114,12 @@ if (addProductform) {
         const paymentMeth1 = document.getElementById('paymentMeth1');
         const paymentMeth2 = document.getElementById('paymentMeth2');
         const warranty = document.getElementById('warranty').value;
-        const coverImage = document.getElementById('coverImage').value;
+        const coverImage = document.getElementById('coverImage').files[0];
         const summery = document.getElementById('summery').value;
         const about = document.getElementById('about').value;
-        const imageFile1 = document.getElementById('imageFile1').value;
-        const imageFile2 = document.getElementById('imageFile2').value;
-        const imageFile3 = document.getElementById('imageFile3').value;
+        const imageFile1 = document.getElementById('imageFile1').files[0];
+        const imageFile2 = document.getElementById('imageFile2').files[0];
+        const imageFile3 = document.getElementById('imageFile3').files[0];
 
         const feature1 = document.getElementById('feature1').value;
         const feature2 = document.getElementById('feature2').value;
@@ -127,9 +127,9 @@ if (addProductform) {
         const feature4 = document.getElementById('feature4').value;
         const feature5 = document.getElementById('feature5').value;
 
-        const dim1 = document.getElementById('dim1').value;
-        const dim2 = document.getElementById('dim2').value;
-        const dim3 = document.getElementById('dim3').value;
+        const dim1 = Number.parseInt(document.getElementById('dim1').value)
+        const dim2 = Number.parseInt(document.getElementById('dim2').value)
+        const dim3 = Number.parseInt(document.getElementById('dim3').value)
 
         const days = document.getElementsByName('days');
         // console.log(Array.from(days));
@@ -138,6 +138,8 @@ if (addProductform) {
         d = Array.from(days).filter(el => {
             return el.checked
         })
+
+
 
         // console.log(paymentMeth1.checked && 'out');
 
@@ -154,9 +156,8 @@ if (addProductform) {
             , coverImage
             , summery
             , about
-            , Images: [imageFile1, imageFile2, imageFile3]
             , features: [feature1, feature2, feature3, feature4, feature5]
-            , dim: [dim1, dim2, dim3]
+            // , dim: [dim1, dim2, dim3]
             , replacmentIn: d[0].value
         }
 
@@ -172,14 +173,26 @@ if (addProductform) {
             !product.coverImage ||
             !product.summery ||
             !product.about ||
-            !product.Images ||
             !product.features ||
-            !product.dim ||
+            // !product.dim ||
             !product.replacmentIn
         ) {
             return alertt('danger', 'please provide all the details')
         }
-        addNewProduct(product);
+
+        const form = new FormData()
+        for (const key in product) {
+            const value = product[key];
+            console.log(`Key: ${key}, Value: ${value}`);
+            form.append(key, product[key])
+        }
+
+        form.append('Images', imageFile1)
+        form.append('Images', imageFile2)
+        form.append('Images', imageFile3)
+
+
+        addNewProduct(form);
     })
 
 

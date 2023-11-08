@@ -61,7 +61,7 @@ const productSchema = new mongoose.Schema({
     Images: [String],
     dim: {
         type: [Number],
-        required: true
+        // required: true
 
     },
     about: {

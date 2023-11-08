@@ -73,13 +73,13 @@ export const addNewProduct = async (product) => {
 
     try {
 
-        // console.log(product);
-        const res = await axios.post('http://127.0.0.1:3000/api/v1/product', { ...product })
+        console.log(product);
+        const res = await axios.post('http://127.0.0.1:3000/api/v1/product', product)
         console.log(res);
         if (res.data.status && res.data.status == 'success') {
             alertt(res.data.status, " Product added ")
             window.setTimeout(() => {
-                location.assign('/me')
+                // location.assign('/me')
             }, 1500)
 
         }

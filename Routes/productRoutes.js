@@ -19,7 +19,8 @@ Route.patch('/unhideProduct/:name', productRoute.unhideHiddenProduct);
 // Route.get('/getHiddenProduct', productRoute.getAllHiddenProduct);
 
 
-Route.route('/').get(productRoute.getAllProduct).post(protect.protectRoute, giveAccess('ADMIN'), productRoute.uploadImages, productRoute.createNewProduct)
+Route.route('/').get(productRoute.getAllProduct).post(protect.protectRoute, giveAccess('ADMIN'), productRoute.uploadImages,
+    productRoute.resizeImage, productRoute.createNewProduct)
 
 
 Route.route('/:id').get(protect.protectRoute, giveAccess('ADMIN'), productRoute.getProductById).patch(productRoute.getProductByIdAndUpdate).delete(protect.protectRoute, giveAccess('ADMIN'), productRoute.getProductByIdAndDelete)
