@@ -91,6 +91,32 @@ export const addNewProduct = async (product) => {
     }
 };
 
+
+// edit product 
+export const editProduct = async (id, product) => {
+
+    try {
+
+        // console.log(product);
+        const res = await axios.patch(`http://127.0.0.1:3000/api/v1/product/${id}`, product)
+        // console.log(res);
+        if (res.data.status && res.data.status == 'success') {
+            alertt(res.data.status, " Product has been Updated..")
+            window.setTimeout(() => {
+                location.assign('/')
+            }, 1500)
+
+        }
+
+
+    } catch (err) {
+        console.log(err);
+        alertt('danger', err.response.data.msg)
+    }
+};
+
+
+
 export const deleteProduct = async (item) => {
 
     try {
@@ -167,6 +193,27 @@ export const unhideProductByName = async (item) => {
 
 
 
+export const addReviewByTour = async (id, data) => {
+    // console.log(email, password);
+    try {
+
+
+        const res = await axios.post(`http://127.0.0.1:3000/api/v1/product/${id}/review`, data)
+        console.log(res);
+        if (res.data.status && res.data.status == 'success') {
+            alertt(res.data.status, " Review Added")
+            window.setTimeout(() => {
+                location.reload(true)
+            }, 1500)
+
+        }
+
+
+    } catch (err) {
+        console.log(err);
+        alertt('danger', err.response.data.msg)
+    }
+};
 
 
 

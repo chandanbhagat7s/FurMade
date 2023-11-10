@@ -11954,9 +11954,9 @@ var alertt = exports.alertt = function alertt(status, message) {
   // console.log("called");
 
   hideAlert();
-  var markup = "<div class=\"alert alert-".concat(status, " fixed-top\" role=\"alert\">\n    ").concat(message, "\n  </div>");
-  document.querySelector('body').insertAdjacentHTML('afterbegin', markup);
-  window.setTimeout(hideAlert, 6000);
+  var markup = "<div class=\"alert alert-".concat(status, " fixed-top \" role=\"alert\" style=\"z-index:3;\">\n    ").concat(message, "\n  </div>");
+  document.querySelector('.navbar-select').insertAdjacentHTML('beforeend', markup);
+  window.setTimeout(hideAlert, 5000);
 };
 },{}],"login.js":[function(require,module,exports) {
 "use strict";
@@ -12100,7 +12100,7 @@ var logout = exports.logout = /*#__PURE__*/function () {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.unhideProductByName = exports.removeFromCart = exports.hideProduct = exports.deleteProduct = exports.addTocartfun = exports.addNewProduct = void 0;
+exports.unhideProductByName = exports.removeFromCart = exports.hideProduct = exports.editProduct = exports.deleteProduct = exports.addTocartfun = exports.addReviewByTour = exports.addNewProduct = void 0;
 var _axios = _interopRequireDefault(require("axios"));
 var _alert = require("./alert");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -12223,23 +12223,60 @@ var addNewProduct = exports.addNewProduct = /*#__PURE__*/function () {
     return _ref3.apply(this, arguments);
   };
 }();
-var deleteProduct = exports.deleteProduct = /*#__PURE__*/function () {
-  var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(item) {
-    var id, res;
+
+// edit product 
+var editProduct = exports.editProduct = /*#__PURE__*/function () {
+  var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(id, product) {
+    var res;
     return _regeneratorRuntime().wrap(function _callee4$(_context4) {
       while (1) switch (_context4.prev = _context4.next) {
         case 0:
           _context4.prev = 0;
           _context4.next = 3;
+          return _axios.default.patch("http://127.0.0.1:3000/api/v1/product/".concat(id), product);
+        case 3:
+          res = _context4.sent;
+          // console.log(res);
+          if (res.data.status && res.data.status == 'success') {
+            (0, _alert.alertt)(res.data.status, " Product has been Updated..");
+            window.setTimeout(function () {
+              location.assign('/');
+            }, 1500);
+          }
+          _context4.next = 11;
+          break;
+        case 7:
+          _context4.prev = 7;
+          _context4.t0 = _context4["catch"](0);
+          console.log(_context4.t0);
+          (0, _alert.alertt)('danger', _context4.t0.response.data.msg);
+        case 11:
+        case "end":
+          return _context4.stop();
+      }
+    }, _callee4, null, [[0, 7]]);
+  }));
+  return function editProduct(_x4, _x5) {
+    return _ref4.apply(this, arguments);
+  };
+}();
+var deleteProduct = exports.deleteProduct = /*#__PURE__*/function () {
+  var _ref5 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(item) {
+    var id, res;
+    return _regeneratorRuntime().wrap(function _callee5$(_context5) {
+      while (1) switch (_context5.prev = _context5.next) {
+        case 0:
+          _context5.prev = 0;
+          _context5.next = 3;
           return _axios.default.get("http://127.0.0.1:3000/api/v1/product/getByName/".concat(item));
         case 3:
-          id = _context4.sent;
+          id = _context5.sent;
           id = id.data.data.product[0]._id;
           // console.log(id);
-          _context4.next = 7;
+          _context5.next = 7;
           return _axios.default.delete("http://127.0.0.1:3000/api/v1/product/".concat(id));
         case 7:
-          res = _context4.sent;
+          res = _context5.sent;
           // )
           //     console.log(res);
           if (res.data.status && res.data.status == 'success') {
@@ -12248,58 +12285,24 @@ var deleteProduct = exports.deleteProduct = /*#__PURE__*/function () {
               location.assign('/deleteProduct');
             }, 1500);
           }
-          _context4.next = 15;
+          _context5.next = 15;
           break;
         case 11:
-          _context4.prev = 11;
-          _context4.t0 = _context4["catch"](0);
-          console.log(_context4.t0);
-          (0, _alert.alertt)('danger', _context4.t0.response.data.msg);
-        case 15:
-        case "end":
-          return _context4.stop();
-      }
-    }, _callee4, null, [[0, 11]]);
-  }));
-  return function deleteProduct(_x4) {
-    return _ref4.apply(this, arguments);
-  };
-}();
-var hideProduct = exports.hideProduct = /*#__PURE__*/function () {
-  var _ref5 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(item) {
-    var res;
-    return _regeneratorRuntime().wrap(function _callee5$(_context5) {
-      while (1) switch (_context5.prev = _context5.next) {
-        case 0:
-          _context5.prev = 0;
-          _context5.next = 3;
-          return _axios.default.patch("http://127.0.0.1:3000/api/v1/product/hideproduct/".concat(item));
-        case 3:
-          res = _context5.sent;
-          if (res.data.status && res.data.status == 'success') {
-            (0, _alert.alertt)(res.data.status, " Product hidden successfully ");
-            window.setTimeout(function () {
-              location.assign('/hideProduct');
-            }, 1500);
-          }
-          _context5.next = 11;
-          break;
-        case 7:
-          _context5.prev = 7;
+          _context5.prev = 11;
           _context5.t0 = _context5["catch"](0);
           console.log(_context5.t0);
           (0, _alert.alertt)('danger', _context5.t0.response.data.msg);
-        case 11:
+        case 15:
         case "end":
           return _context5.stop();
       }
-    }, _callee5, null, [[0, 7]]);
+    }, _callee5, null, [[0, 11]]);
   }));
-  return function hideProduct(_x5) {
+  return function deleteProduct(_x6) {
     return _ref5.apply(this, arguments);
   };
 }();
-var unhideProductByName = exports.unhideProductByName = /*#__PURE__*/function () {
+var hideProduct = exports.hideProduct = /*#__PURE__*/function () {
   var _ref6 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(item) {
     var res;
     return _regeneratorRuntime().wrap(function _callee6$(_context6) {
@@ -12307,13 +12310,13 @@ var unhideProductByName = exports.unhideProductByName = /*#__PURE__*/function ()
         case 0:
           _context6.prev = 0;
           _context6.next = 3;
-          return _axios.default.patch("http://127.0.0.1:3000/api/v1/product/unhideProduct/".concat(item));
+          return _axios.default.patch("http://127.0.0.1:3000/api/v1/product/hideproduct/".concat(item));
         case 3:
           res = _context6.sent;
           if (res.data.status && res.data.status == 'success') {
-            (0, _alert.alertt)(res.data.status, " Product unhidden successfully ");
+            (0, _alert.alertt)(res.data.status, " Product hidden successfully ");
             window.setTimeout(function () {
-              location.assign('/getAllHiddenProductList');
+              location.assign('/hideProduct');
             }, 1500);
           }
           _context6.next = 11;
@@ -12329,8 +12332,77 @@ var unhideProductByName = exports.unhideProductByName = /*#__PURE__*/function ()
       }
     }, _callee6, null, [[0, 7]]);
   }));
-  return function unhideProductByName(_x6) {
+  return function hideProduct(_x7) {
     return _ref6.apply(this, arguments);
+  };
+}();
+var unhideProductByName = exports.unhideProductByName = /*#__PURE__*/function () {
+  var _ref7 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(item) {
+    var res;
+    return _regeneratorRuntime().wrap(function _callee7$(_context7) {
+      while (1) switch (_context7.prev = _context7.next) {
+        case 0:
+          _context7.prev = 0;
+          _context7.next = 3;
+          return _axios.default.patch("http://127.0.0.1:3000/api/v1/product/unhideProduct/".concat(item));
+        case 3:
+          res = _context7.sent;
+          if (res.data.status && res.data.status == 'success') {
+            (0, _alert.alertt)(res.data.status, " Product unhidden successfully ");
+            window.setTimeout(function () {
+              location.assign('/getAllHiddenProductList');
+            }, 1500);
+          }
+          _context7.next = 11;
+          break;
+        case 7:
+          _context7.prev = 7;
+          _context7.t0 = _context7["catch"](0);
+          console.log(_context7.t0);
+          (0, _alert.alertt)('danger', _context7.t0.response.data.msg);
+        case 11:
+        case "end":
+          return _context7.stop();
+      }
+    }, _callee7, null, [[0, 7]]);
+  }));
+  return function unhideProductByName(_x8) {
+    return _ref7.apply(this, arguments);
+  };
+}();
+var addReviewByTour = exports.addReviewByTour = /*#__PURE__*/function () {
+  var _ref8 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(id, data) {
+    var res;
+    return _regeneratorRuntime().wrap(function _callee8$(_context8) {
+      while (1) switch (_context8.prev = _context8.next) {
+        case 0:
+          _context8.prev = 0;
+          _context8.next = 3;
+          return _axios.default.post("http://127.0.0.1:3000/api/v1/product/".concat(id, "/review"), data);
+        case 3:
+          res = _context8.sent;
+          console.log(res);
+          if (res.data.status && res.data.status == 'success') {
+            (0, _alert.alertt)(res.data.status, " Review Added");
+            window.setTimeout(function () {
+              location.reload(true);
+            }, 1500);
+          }
+          _context8.next = 12;
+          break;
+        case 8:
+          _context8.prev = 8;
+          _context8.t0 = _context8["catch"](0);
+          console.log(_context8.t0);
+          (0, _alert.alertt)('danger', _context8.t0.response.data.msg);
+        case 12:
+        case "end":
+          return _context8.stop();
+      }
+    }, _callee8, null, [[0, 8]]);
+  }));
+  return function addReviewByTour(_x9, _x10) {
+    return _ref8.apply(this, arguments);
   };
 }();
 },{"axios":"../../node_modules/axios/index.js","./alert":"alert.js"}],"index.js":[function(require,module,exports) {
@@ -12472,9 +12544,12 @@ var _alert = require("./alert");
 var logins = document.querySelector('.login');
 var signIn = document.querySelector('.signupPage');
 var addProductform = document.querySelector('.addProduct');
+var editProductform = document.querySelector('.editProduct');
 var logoutbtn = document.querySelector('.logout');
 var addToCart = document.querySelectorAll('.addToCart');
+var addToCart2 = document.querySelector('.addToCart2');
 var removeFromCartBtn = document.querySelectorAll('.removeFromCart');
+var submitReview = document.querySelector('.submitReview');
 var deletProductForm = document.getElementById('deletProduct');
 var hideProductForm = document.getElementById('hidePRoduct');
 var unhideProductBtn = document.querySelectorAll('.unhide-btn');
@@ -12514,8 +12589,28 @@ if (addToCart) {
       // console.log(e);
       // console.log(e.isTrusted);
       // console.log(e.target.parentElement.firstElementChild.innerText);
-      (0, _functions.addTocartfun)(e.target.parentElement.firstElementChild.innerText);
+      // console.log();
+      (0, _functions.addTocartfun)(e.target.dataset.product);
     });
+  });
+  // console.log("came into adddddd");
+  // let productName = document.querySelector('.productName')
+  // console.log(productName.innerText);
+  // addToCart.addEventListener('click', (e) => {
+  //     console.log(e);
+  //     // addTocartfun(productName.innerText)
+  // })
+}
+
+if (addToCart2) {
+  // console.log(addToCart2);
+  addToCart2.addEventListener('click', function (e) {
+    // e.data =
+
+    // console.log(e.isTrusted);
+    // console.log(e.target.parentElement.firstElementChild.innerText);
+    // console.log();
+    (0, _functions.addTocartfun)(e.target.dataset.product);
   });
   // console.log("came into adddddd");
   // let productName = document.querySelector('.productName')
@@ -12529,8 +12624,9 @@ if (addToCart) {
 if (removeFromCartBtn) {
   removeFromCartBtn.forEach(function (e) {
     e.addEventListener('click', function (e) {
-      console.log(e.target.parentElement.firstElementChild.innerText);
-      (0, _functions.removeFromCart)(e.target.parentElement.firstElementChild.innerText);
+      // console.log(e.target.parentElement.firstElementChild.innerText);
+
+      (0, _functions.removeFromCart)(e.target.dataset.product);
     });
   });
 }
@@ -12583,16 +12679,13 @@ if (addProductform) {
       coverImage: coverImage,
       summery: summery,
       about: about,
-      features: [feature1, feature2, feature3, feature4, feature5]
-      // , dim: [dim1, dim2, dim3]
-      ,
+      features: [feature1, feature2, feature3, feature4, feature5],
+      dim: [dim1 * 1, dim2 * 1, dim3 * 1],
       replacmentIn: d[0].value
     };
     console.log(product);
     // console.log(email, password, cnfPassword, mobile);
-    if (!product.price || !product.type || !product.colors || !product.deliveredIn || !product.dileveryCharges || !product.paymentMethod || !product.warranty || !product.coverImage || !product.summery || !product.about || !product.features ||
-    // !product.dim ||
-    !product.replacmentIn) {
+    if (!product.price || !product.type || !product.colors || !product.deliveredIn || !product.dileveryCharges || !product.paymentMethod || !product.warranty || !product.coverImage || !product.summery || !product.about || !product.features || !product.dim || !product.replacmentIn) {
       return (0, _alert.alertt)('danger', 'please provide all the details');
     }
     var form = new FormData();
@@ -12605,6 +12698,82 @@ if (addProductform) {
     form.append('Images', imageFile2);
     form.append('Images', imageFile3);
     (0, _functions.addNewProduct)(form);
+  });
+}
+if (editProductform) {
+  console.log(editProductform);
+  editProductform.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var productName = document.getElementById('productName').value;
+    var price = document.getElementById('price').value;
+    var type = document.getElementById('type').value;
+    var colors = document.getElementById('colors').value;
+    var deliveredIn = document.getElementById('deliveredIn').value;
+    var discription = document.getElementById('Discription').value;
+    var dileveryCharges = document.getElementById('dileveryCharges').value;
+    var paymentMeth1 = document.getElementById('paymentMeth1');
+    var paymentMeth2 = document.getElementById('paymentMeth2');
+    var warranty = document.getElementById('warranty').value;
+    // const coverImage = document.getElementById('coverImage').files[0];
+    var summery = document.getElementById('summery').value;
+    var about = document.getElementById('about').value;
+    // const imageFile1 = document.getElementById('imageFile1').files[0];
+    // const imageFile2 = document.getElementById('imageFile2').files[0];
+    // const imageFile3 = document.getElementById('imageFile3').files[0];
+
+    var feature1 = document.getElementById('feature1').value;
+    var feature2 = document.getElementById('feature2').value;
+    var feature3 = document.getElementById('feature3').value;
+    var feature4 = document.getElementById('feature4').value;
+    var feature5 = document.getElementById('feature5').value;
+    var dim1 = Number.parseInt(document.getElementById('dim1').value);
+    var dim2 = Number.parseInt(document.getElementById('dim2').value);
+    var dim3 = Number.parseInt(document.getElementById('dim3').value);
+    var days = document.getElementsByName('days');
+    // console.log(Array.from(days));
+    var d;
+    days ? d = Array.from(days).filter(function (el) {
+      return el.checked;
+    }) : '';
+
+    // console.log(paymentMeth1.checked && 'out');
+
+    var product = {
+      productName: productName.toLowerCase(),
+      discription: discription,
+      price: price,
+      type: type.toLowerCase(),
+      colors: colors.split(','),
+      deliveredIn: deliveredIn,
+      dileveryCharges: dileveryCharges,
+      paymentMethod: [paymentMeth1.checked && 'Online', paymentMeth2.checked && 'Cash on delevery'],
+      warranty: warranty
+      // , coverImage
+      ,
+      summery: summery,
+      about: about,
+      features: [feature1, feature2, feature3, feature4, feature5],
+      dim: [dim1 * 1, dim2 * 1, dim3 * 1],
+      replacmentIn: d[0].value
+    };
+    console.log(product);
+    // console.log(email, password, cnfPassword, mobile);
+    if (!product.price || !product.type || !product.colors || !product.deliveredIn || !product.dileveryCharges || !product.paymentMethod || !product.warranty || !product.summery || !product.about || !product.features || !product.dim || !product.replacmentIn) {
+      return (0, _alert.alertt)('danger', 'please provide all the details');
+    }
+
+    // const form = new FormData()
+    // for (const key in product) {
+    //     const value = product[key];
+    //     console.log(`Key: ${key}, Value: ${value}`);
+    //     form.append(key, product[key])
+    // }
+
+    // form.append('Images', imageFile1)
+    // form.append('Images', imageFile2)
+    // form.append('Images', imageFile3)
+    console.log(e.target.dataset.id);
+    (0, _functions.editProduct)(e.target.dataset.id, product);
   });
 }
 if (deletProductForm) {
@@ -12629,6 +12798,22 @@ if (unhideProductBtn) {
       (0, _functions.unhideProductByName)(e.target.parentElement.firstElementChild.innerText);
       // const item = document.getElementsByClassName('item-hide');
       // hideProduct(item[0].value)
+    });
+  });
+}
+
+if (submitReview) {
+  submitReview.addEventListener('submit', function (e) {
+    e.preventDefault();
+    console.log("cameee");
+    // extra the data
+    console.log(e);
+    var review = document.querySelector('.reviewUser').value;
+    var rating = document.querySelector('.ratingUser').value * 1;
+    console.log("id is", e.target.dataset.pid);
+    (0, _functions.addReviewByTour)(e.target.dataset.pid, {
+      review: review,
+      rating: rating
     });
   });
 }
@@ -12657,7 +12842,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58561" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53766" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

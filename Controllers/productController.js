@@ -222,6 +222,7 @@ exports.getProductByName = catchAsync(async (req, res, next) => {
 
 
 exports.getProductByIdAndUpdate = catchAsync(async (req, res, next) => {
+    console.log("cameinto gpiu");
     const product = await Product.findByIdAndUpdate(req.params.id, {
         ...req.body
     }, {

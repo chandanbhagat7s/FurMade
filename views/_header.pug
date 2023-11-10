@@ -1,7 +1,6 @@
 
-
-nav.navbar.navbar-expand-lg.navbar-light.bg-light
-    .container-fluid
+nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.fixed-top.navbar-select
+    .container-fluid.hideNavbar
         button.navbar-toggler(type="button", data-bs-toggle="collapse", data-bs-target="#navbarTogglerDemo03", aria-        controls="navbarTogglerDemo03", aria-expanded="false", aria-label="Toggle navigation")
             span.navbar-toggler-icon
         a.navbar-brand(href="/") Furnish
@@ -12,17 +11,17 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
                 li.nav-item
                     a.nav-link(href="#") About 
             if user  
-                button.btn.btn-outline-dark.logout Logout
+                button.btn.btn-outline-danger.logout Logout
                 a.btn(href='/me') 
-                    img(src="../images/product/bed-1.jpg", class="img-fluid  rounded-circle", alt="..." style="max-width: 50px;")
-                    p.card-text=user.name.split(' ')[0]
+                    img(src="./img/web/profile.png", class="img-fluid  rounded-circle", alt="..." style="max-width: 30px;")
+                    p.card-text.text-white=user.name.split(' ')[0]
 
 
 
             else    
                 form.d-flex.gap-2
-                    a.btn.btn-outline-primary(href="/login") Login
-                    a.btn.btn-outline-dark(href="/signup") Sign up
+                    a.btn.btn-success(href="/login") Login
+                    a.btn.btn-outline-primary(href="/signup") Sign up
 
 
 

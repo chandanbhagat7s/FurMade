@@ -1,26 +1,92 @@
 //- which file 
 extends base
 block content
-    .container.my-3
-        .row.row-cols-2.justify-content-center
-            each product in products
-                .col.card.mb-2(style="max-width: 540px;")
-                    .row.g-0
-                        .col-md-4
-                            img.img-fluid.rounded-start(src=`images/product/${product.coverImage}`, alt=`${product.productName} image`)
-                        .col-md-8
-                            .card-body
-                                h5.card-title.productName=product.productName
-                                p.card-text=product.discription
-                                p.card-text=` Price : ₹ ${product.price}` 
-                                p.card-text=` Replacement In :  ${product.replacmentIn}` 
-                                p.card-text
-                                    small.text-muted=`available in ${product.colors} colors`
 
-                                a.btn.btn-outline-success(href=`productss/${product.slug}`  ) Details
+
+    //- .container.d-flex.justify-content-center.mt-50.mb-50
+        .row
+            .col-md-4.mt-2
+                .card
+                    .card-body
+                        .card-img-actions
+                            img(src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1562074043/234.png", class="card-img img-fluid", width="96", height="350", alt="")
+
+                    .card-body.bg-light.text-center
+                        .mb-2
+                            h6.font-weight-semibold.mb-2
+                                a(href="#" class="text-default mb-2", data-abc="true") Toshiba Notebook with 500GB HDD & 8GB RAM
+                            a(href="#" class="text-muted", data-abc="true") Laptops & Notebooks
+                        h3.mb-0.font-weight-semibold $250.99
+                        i.fa.fa-star.star
+                        i.fa.fa-star.star
+                        i.fa.fa-star.star
+                        i.fa.fa-star.star
+                        .text-muted.mb-3 34 reviews
+                        button(type="button", class="btn bg-cart")
+                            i.fa.fa-cart-plus.mr-2
+                            | Add to cart
+
+
+        //- .container.my-3
+        //-     .row.row-cols-2.justify-content-center
+
+    section.py-1.first-templat-up
+        each product in products
+            .container.px-4.px-lg-5.my-5
+                .row.gx-4.gx-lg-5.align-items-center
+                    .col-md-6
+                        img.card-img-top.mb-5.mb-md-0(src=`images/product/${product.coverImage}`, alt='...')
+                    .col-md-6
+                        .small.mb-1=product.type
+                        h1.display-5.fw-bolder=product.productName.toUpperCase()
+                        .fs-5.mb-5
+                            //- span.text-decoration-line-through   $45.00
+                            h1
+                                strong=`₹ ${product.price}`
+                        strong=`Category :`
+                            p.lead=` ${product.type}`
+                        strong=`About :`
+                            p.lead=` ${product.about}`
+                        strong=`Colors :`
+                            p.lead=` ${product.colors}`
+                        p.card-text=` Replacement In :  ${product.replacmentIn}` 
+                        p.card-text
+                            small.text-muted=`available in ${product.colors} colors`
+
+                        if user
+                            if user.role == 'ADMIN'
+                                a.btn.btn-outline-success(href=`./productss/${product.slug}`  ) Details
                                 span   
-                                button.btn.btn-outline-dark.addToCart Add to cart
-                                div=products.review
+                                a.btn.btn-outline-dark(href=`./editProduct/${product.productName}`) Edit Product
+                            else
+                                a.btn.btn-outline-success(href=`./productss/${product.slug}`  ) Details
+                                span   
+                                button.btn.btn-outline-dark.addToCart(data-product=`${product.productName}`) Add to cart
+                        else
+                            a.btn.btn-outline-success(href=`productss/${product.slug}`  ) Details
+
+
+
+    //- .row.row-cols-1.row-cols-md-3.g-4
+        each product in products
+            .col
+                .card.h-100
+                    img.card-img-top(src=`images/product/${product.coverImage}`, alt=`${product.productName} image`)
+                    .card-body
+                        h5.card-title.productName=product.productName
+                        p.card-text=product.discription
+                        p.card-text=` Price : ₹ ${product.price}` 
+                        p.card-text=` Replacement In :  ${product.replacmentIn}` 
+                        p.card-text
+                            small.text-muted=`available in ${product.colors} colors`
+
+                        a.btn.btn-outline-success(href=`./productss/${product.slug}`  ) Details
+                        span   
+                        button.btn.btn-outline-dark.addToCart Add to cart
+                        div=products.review
+
+
+
 
 
 

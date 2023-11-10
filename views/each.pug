@@ -1,6 +1,133 @@
 
 extends base
 block content
+
+
+  section.py-1.first-templat-up(style="background-color: #F3EEEA; ")
+    .container.px-4.px-lg-5.my-5
+      .row.gx-4.gx-lg-5.align-items-center
+        .col-md-6
+          img.card-img-top.mb-5.mb-md-0(src=`./../img/${products.productName}-2.jpeg`, alt='...')
+        .col-md-6
+          .small.mb-1=products.type
+          h1.display-5.fw-bolder=products.productName.toUpperCase()
+          .fs-5.mb-5
+            //- span.text-decoration-line-through $45.00
+            h1
+              strong=`₹ ${products.price}`
+          strong=`Category :`
+            p.lead=` ${products.type}`
+          strong=`About :`
+            p.lead=` ${products.about}`
+          strong=`Colors :`
+            p.lead=` ${products.colors}`
+          strong=`Discription :`
+            p.lead=` ${products.discription}`
+          strong=`Replacement In :`
+            p.lead=` ${products.replacmentIn}`
+          //- p.lead=products.dim.join()
+
+
+
+  section.py-1
+    .container.px-4.px-lg-5.my-5
+      .row.gx-4.gx-lg-5.align-items-center
+        .col-md-6
+          img.card-img-top.mb-5.mb-md-0(src=`./../img/${products.productName}-3.jpeg`, alt='...')
+        .col-md-6
+          div
+            strong Dimentions 
+              p.lead=` Length -> ${products.dim[0]}`
+              p.lead=` Breadth -> ${products.dim[1]}`
+              p.lead=` Width -> ${products.dim[2]}`
+            p.lead=products.summery
+
+
+  section.py-1(style="background-color: #F3EEEA")
+    .container.px-4.px-lg-5.my-5
+      .row.gx-4.gx-lg-5.align-items-center
+        .col-md-6
+          img.card-img-top.mb-5.mb-md-0(src=`./../img/${products.productName}-1.jpeg`, alt='...')
+        .col-md-6
+          .small.mb-1=products.type
+          h1.display-5.fw-bolder FEATURES
+          .fs-5.mb-5
+            //- span.text-decoration-line-through $45.00
+            .row.row-cols-1.row-cols-md-2.g-4
+              for p in products.features
+                .card-body
+                  h5.card-title=`->${p}`
+                
+
+       
+            //- nav.navbar.navbar-expand-lg.navbar-dark
+            .d-flex.justify-content-around.bg-dark.fixed-bottom.p-3
+              .box-2.text-white
+                h4.text=`${products.productName.toUpperCase()} -> ₹${products.price} `
+
+
+              .d-flex.justify-content-around
+                button.btn.btn-outline-warning.flex-shrink-0.addToCart2(data-product=`${products.productName}`)
+                  i.bi-cart-fill.me-1
+                  | Add to cart
+                
+
+                button.btn.btn-outline-primary.flex-shrink-0(type='button')
+                  i.bi-cart-fill.me-1
+                  | Buy Now !
+  section.pt-5
+
+    h3.mb-4.text-center REVIEWS
+            
+    .row.p-2
+      each product in products.review
+        div.col
+            div.card-body.border.border-2.rounded.border-dark 
+              img.btn(src="../img/web/user.png", alt="" style="max-width:50px")
+              span.mb-4.text-center(style="color: #776B5D;")=product.byUser.name.toUpperCase() 
+              hr
+              - const arr = new Array(product.rating).fill(product.rating)
+              each i  in arr
+                img.btn(src="../img/web/star.png", alt="img" style="max-width:50px")
+              hr
+              p.dark-grey-text.mt-4=product.review
+              p.dark-grey-text.mt-4=product.createdAt.toLocaleDateString()
+      .container.mt-2
+        .d-flex.justify-content-end
+          a.btn.btn-dark.displayMoreReview(href=`/allReviews/${products.productName}`) MORE REVIEW
+
+
+  section.vh-70.my-5
+    .container.h-100
+      .row.d-flex.justify-content-center.align-items-center.h-100
+        .col-lg-12.col-xl-11
+          .card.text-black(style="border-radius: 25px;")
+            .card-body.p-md-5
+              .row.justify-content-center
+                .col-md-10.col-lg-6.col-xl-5.order-2.order-lg-1
+                  p.text-center.h1.fw-bold.mb-5.mx-1.mx-md-4.mt-4 POST A REVIEW
+                  form.mx-1.mx-md-4.submitReview(data-pid=`${products._id}`)
+                    .d-flex.flex-row.align-items-center.mb-4
+                      i.fas.fa-user.fa-lg.me-3.fa-fw
+                      .form-outline.flex-fill.mb-0
+                        input.reviewUser(type="text", id="form3Example1c", class="form-control")
+                        label.form-label(for="form3Example1c") Your Thoughts
+                    .d-flex.flex-row.align-items-center.mb-4
+                      i.fas.fa-envelope.fa-lg.me-3.fa-fw
+                      .form-outline.flex-fill.mb-0
+                        input.ratingUser(type="number", id="form3Example3c", class="form-control")
+                        label.form-label(for="form3Example3c") Rating
+                    
+                    .d-flex.justify-content-center.mx-4.mb-3.mb-lg-4
+                      button.btn.btn-outline-success.btn-lg POST
+                .col-md-10.col-lg-6.col-xl-7.d-flex.align-items-center.order-1.order-lg-2(type='submit' )
+                  img(src="../img/web/review.jpg", class="img-fluid", alt="Sample image")
+
+
+ 
+
+
+//- 
   .bg-light.bg-gradient
   #carouselExampleDark.carousel.carousel-dark.slide(data-bs-ride="carousel" )
     .carousel-indicators.shadow-lg.rounded
@@ -9,7 +136,7 @@ block content
       button(type="button", data-bs-target="#carouselExampleDark", data-bs-slide-to="2", aria-label="Slide 3")
     .carousel-inner
       .carousel-item.active(data-bs-interval="4000")
-        
+
         img.d-block.w-100(src=`/images/product/${products.Images[0]}`, alt="image")
         .carousel-caption.d-none.d-md-block
           h5 First slide label
@@ -47,7 +174,7 @@ block content
           p.card-text.fw-bold= `Available in ${products.colors} colors` 
           p.card-text.fw-bold= `Warranty of ${products.warranty} ` 
           p.card-text.fw-bold= `Dimensions :  length - ${products.dim[0]} breadth - ${products.dim[1]} height-  ${products.dim[2]}` 
-          
+
 
   .row.my-2.text-center
     .col-sm-6
@@ -56,19 +183,19 @@ block content
           h5.card-title Features
           for f in products.features
             p=f
-           
-          
+
+
     .col-sm-6
       .card.bg-dark.text-white
         .card-body
           h5.card-title.dispaly-2 Somthing More
           p=products.summery 
-    
 
-  
 
-        
-      
+
+
+
+
   div.text-center.display-3 REVIEWS
   .container.d-flex.justify-content-center.align-items-center.my-5
     .row.bg-dark.bg-gradient.text-center.align-content-center
@@ -86,7 +213,7 @@ block content
 
 
 
- 
+
 
 
 

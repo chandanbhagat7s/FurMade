@@ -1,0 +1,153 @@
+
+    
+extends base
+block content 
+    div#main-wrapper.container
+        div.row.justify-content-center
+            div.col-xl-10
+                div.card.border-0
+                    div.card-body.p-0
+                        div.row.no-gutters
+                            div.col-lg-6
+                                div.p-5
+                                    h3.h4.font-weight-bold.text-theme EDIT PRODUCT
+                                    h6.h5.mb-0 Welcome back!
+                                    p.text-muted.mt-2.mb-5 Enter details of product to be added
+                                    form.editProduct(data-id=products._id)
+                                        div.form-group.mb-3
+                                            label(for="productName") Product Name
+                                                span.text-danger  this field cannot be changed
+                                            input#productName.form-control(type="text" value=`${products.productName}` readonly)
+
+                                        div.form-group.mb-5
+                                            label(for="price") Price (in Rs.)
+                                                span.text-danger  *
+                                            input#price.form-control(type="number" value=`${products.price}`)
+                                            
+                                        div.form-group
+                                            label(for="type") Type (Sofa,Bed,Table ...)
+                                                span.text-danger  *
+                                            input#type.form-control(type="text" ,value=`${products.type}`)
+
+                                        div.form-group.mb-3
+                                            label(for="deliveredIn") Will be delivered in (10days,5days...)
+                                                span.text-danger  *
+                                            input#deliveredIn.form-control(type="text" value=`${products.deliveredIn}`)
+
+                                        div.form-group
+                                            label(for="Discription") Discription [40 to 100 words]
+                                                span.text-danger  *
+                                            input#Discription.form-control(type="text" value=`${products.discription}`)
+
+                                        div.form-group.mb-3
+                                            label(for="colors") colors [red,blue...]
+                                                span.text-danger  *
+                                            input#colors.form-control(type="text" value=`${products.colors}`)
+                                            
+                                        div.form-group.mb-3
+                                            label(for="dileveryCharges") Dilevery Charges (per KM)
+                                                span.text-danger  *
+                                            input#dileveryCharges.form-control(type="Number" value=`${products.dileveryCharges}`)
+
+                                        div.form-group.mb-3 Payment Option available
+                                            span.text-danger  *
+                                            div.form-check.mb-3 
+                                                -const CODe = products.paymentMethod[0]=='Cash on Delivery' ||  products.paymentMethod[1]=='COD' || products.paymentMethod[0]=='COD' || products.paymentMethod[0]=='COD'
+                                                -const online = products.paymentMethod[0]=='Online'
+                                            
+                                                input.form-check-input(type="radio", name="Online", id="paymentMeth1" value="Online" checked=online)
+                                                label.form-check-label(for="flexRadioDefault1") Online
+                                            div.form-check
+                                                input.form-check-input(type="radio", name="COD", id="paymentMeth2" value="COD" checked=CODe)
+                                                label.form-check-label(for="flexRadioDefault2") Cash On Delivery
+
+
+                                        div.form-group
+                                            label(for="warranty") Warranty
+                                                span.text-danger  *
+                                            input#warranty.form-control(type="text" value=`${products.warranty}`)
+
+                                            
+                                        div.form-group
+                                            label(for="summery") Summery
+                                                span.text-danger  *
+                                            input#summery.form-control(type="text" value=`${products.summery}`)
+
+                                        div.form-group
+                                            label(for="about") About
+                                                span.text-danger  *
+                                            input#about.form-control(type="text" value=`${products.about}`)
+
+
+
+
+
+
+
+                                        div.form-group.mb-3
+                                            label(for="feature1") Features
+                                                span.text-danger  *
+                                            input#feature1.form-control.mb-2(type="text" value=`${products.features[0]}`) 
+                                            input#feature2.form-control.mb-2(type="text" value=`${products.features[1]}`)
+                                            input#feature3.form-control.mb-2(type="text" value=`${products.features[2]}`)
+                                            input#feature4.form-control.mb-2(type="text" value=`${products.features[3]}`)
+                                            input#feature5.form-control.mb-2(type="text" value=`${products.features[4]}`)
+
+
+
+                                        div.form-group.mb-3 Dimentions
+                                            span.text-danger  *
+                                            br
+                                            label.form-check-label(for="dim1") Length  (m)
+                                            input#dim1.form-control.mb-2(type="number" value=`${products.dim[0]}`) 
+
+                                            label.form-check-label(for="dim2") Breadth (m)
+                                            input#dim2.form-control.mb-2(type="number" value=`${products.dim[1]}`)
+
+                                            label.form-check-label(for="dim3") Width (m)
+                                            input#dim3.form-control.mb-2(type="number" value=`${products.dim[2]}`)
+
+
+                                        div.form-group.mt-3 Replacement Timeline
+                                            span.text-danger  *
+                                            div.form-check.mb-3 
+                                                - const val1=products.replacmentIn === '5 days'
+                                                - const val2=products.replacmentIn === '7 days'
+                                                - const val3=products.replacmentIn === '0 days'
+                                                input.form-check-input(type="radio", name="days", id="flexRadioDefault1" value="5 days"  checked=val1)
+                                                label.form-check-label(for="flexRadioDefault1") 5 days
+                                            div.form-check.mb-3
+                                                input.form-check-input(type="radio", name="days", id="flexRadioDefault2" value="7 days" checked=val2)
+                                                label.form-check-label(for="flexRadioDefault2") 7 days
+                                            div.form-check.mb-3
+                                                input.form-check-input(type="radio", name="days", id="flexRadioDefault3" value="0 days" checked=val3)
+                                                label.form-check-label(for="flexRadioDefault2") 0 days
+                                            br
+                                        button(type="submit", class="btn  btn-outline-dark my-2 ") Update !
+
+
+
+
+
+                                        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,62 +1,136 @@
 extends base
 block content
 
-    .card.mb-3.m-auto(style="max-width: 540px")
-        .row.g-0
-            .col-md-4
-                img.img-fluid.rounded-start(src="/images/product/bed-1.jpg", alt="...")
-            .col-md-8
-                .card-body
-                    h5.card-title= user.name.toUpperCase()
-                    p.card-text= `Mobile Number : 7038309471`
-                    p.card-text= `email : ${user.email}`
-                    p.card-text
-                        button.btn.btn-outline-dark Edit information
-                        
 
-            //- .col-md-4
-                img.img-fluid.rounded-start(src="/images/product/bed-1.jpg", alt="...")
-    if user.role == 'USER'
-        .card-group
-            .card
-                .card-body
-                    h5.card-title YOUR CART
-                        .container.my-3
-                            .row.row-cols-2.justify-content-center
-                                if (user.userCart.length ==0)
-                                    div it's Empty , add items to cart to be listed ....
+    section.h-100.gradient-custom-2
+        .container.py-5.h-100
+            .row.d-flex.justify-content-center.align-items-center.h-100
+                .col.col-lg-9.col-xl-7
+                    .card
+                        .rounded-top.text-white.d-flex.flex-row(style="background-color: #000; height:200px;")
+                            .ms-4.mt-5.d-flex.flex-column(style="width: 150px;")
+                                img(src="../img/web/user.png", alt="Generic placeholder image", class="img-fluid img-thumbnail mt-4 mb-2", style="width: 150px; z-index: 1")
+                                button.btn.btn-outline-dark(data-mdb-ripple-color="dark", style="z-index: 1;") Edit profile
+                            .ms-3(style="margin-top: 130px;")
+                                h5= user.name.toUpperCase()
+                                //- p= user.address.toUpperCase()
+                        .p-4.text-black(style="background-color: #f8f9fa;")
+                            .d-flex.justify-content-end.text-center.py-1
+                                div
+                                    p.mb-1.h5=user.userCart.length
+                                    p.small.text-muted.mb-0 Cart
+                                div.px-3
+                                    p.mb-1.h5=user.userCart.length
+                                    p.small.text-muted.mb-0 Buyed Product
 
-                                else
-                                    each product in user.userCart
-                                        .col.card.mb-2(style="max-width: 540px;")
-                                            .row.g-0 
-                                                .col-md-4
-                                                    img.img-fluid.rounded-start(src=`images/product/${product.coverImage}`, alt=`${product.productName} image`)
-                                                .col-md-8
-                                                    .card-body
-                                                        h5.card-title=product.productName
-                                                        p.card-text=` Price : ₹ ${product.price}` 
+                        .card-body.p-4.text-black
+                            .mb-5
+                                p.lead.fw-normal.mb-1 About
+                                .p-4(style="background-color: #f8f9fa;")
+                                    p.font-italic.mb-1=  `Email : ${user.email}`
+                                    p.font-italic.mb-1=`Mobile Number : 7038309471`
 
-                                                        a.btn.btn-outline-success(href=`productss/${product.slug}`  ) Details
-                                                        span   
-                                                        button.btn.btn-outline-dark.removeFromCart Remove from cart
-                                                        //- div=products.review
-    if user.role == 'ADMIN'
-        p.text add product        
-            span               
-            a.btn.btn-outline-success(href=`addProduct`  ) Add product
-        p.text Delete product        
-            span               
-            a.btn.btn-outline-danger(href=`deleteProduct`  ) Delete product
-        p.text Hide product        
-            span               
-            a.btn.btn-outline-secondary(href=`hideProduct`  ) hide product
-        p.text edit  product        
-            span               
-            a.btn.btn-outline-info(href=`editProduct`  ) edit product
 
-        p.text unhide  product        
-            span               
-            a.btn.btn-outline-primary(href=`getAllHiddenProductList`  ) unhide products
-         
+                            if user.role == 'USER'
+                                .d-flex.justify-content-between.align-items-center.mb-4
+                                    p.lead.fw-normal.mb-0 Your Cart
+                                    //- p.mb-0: a(href="#!", class="text-muted") Show all
+                            
+                                .row.g-2
+                                    if (user.userCart.length ==0)
+                                        div it's Empty , add items to cart to be listed ....
+
+                                    else
+                                        .row.row-cols-2
+                                            each product in user.userCart
+                                                .col.card.mb-2(style="max-width: 540px;")
+                                                    .row.g-0 
+                                                        .col-md-4
+                                                            img.img-fluid.rounded-start(src=`images/product/${product.coverImage}`, alt=`${product.productName} image`)
+                                                        .col-md-8
+                                                            .card-body
+                                                                h5.card-title=product.productName
+                                                                p.card-text=` Price : ₹ ${product.price}` 
+
+                                                                a.btn.btn-outline-success(href=`productss/${product.slug}`  ) Details
+                                                                span   
+                                                                button.btn.btn-outline-dark.removeFromCart(data-product=`${product.productName}`) Remove
+                            else
+                                .row.g-2
+                                    .row.row-cols-2
+                                        .my-2
+                                            a.btn.btn-outline-success(href=`addProduct`  ) Add product                                            
+                                        .my-2
+                                            a.btn.btn-outline-danger(href=`deleteProduct`  ) Delete product                                            
+                                        .my-2
+                                            a.btn.btn-outline-secondary(href=`hideProduct`  ) Hide product                                            
+                                        .my-2
+                                            a.btn.btn-outline-info(href=`editProduct`  ) Edit product                                            
+                                        .my-2
+                                            a.btn.btn-outline-primary(href=`getAllHiddenProductList`  ) Unhide products                                            
+                                            
+
+
+
+
+
+
+        //- .card.mb-3.m-auto.pb-3(style="max-width: 540px")
+            .row.g-0
+                .col-md-4
+                    img.img-fluid.rounded-start(src="../img/web/profile.png", alt="...")
+                .col-md-8
+                    .card-body
+                        h5.card-title= user.name.toUpperCase()
+                        p.card-text= `Mobile Number : 7038309471`
+                        p.card-text= `email : ${user.email}`
+                        p.card-text
+                            button.btn.btn-outline-dark Edit information
+
+
+                //- .col-md-4
+                    img.img-fluid.rounded-start(src="/images/product/bed-1.jpg", alt="...")
+        //- if user.role == 'USER'
+            .card-group
+                .card
+                    .card-body
+                        h5.card-title YOUR CART
+                            .container.my-3
+                                .row.row-cols-2.justify-content-center
+                                    if (user.userCart.length ==0)
+                                        div it's Empty , add items to cart to be listed ....
+
+                                    else
+                                        each product in user.userCart
+                                            .col.card.mb-2(style="max-width: 540px;")
+                                                .row.g-0 
+                                                    .col-md-4
+                                                        img.img-fluid.rounded-start(src=`images/product/${product.coverImage}`, alt=`${product.productName} image`)
+                                                    .col-md-8
+                                                        .card-body
+                                                            h5.card-title=product.productName
+                                                            p.card-text=` Price : ₹ ${product.price}` 
+
+                                                            a.btn.btn-outline-success(href=`productss/${product.slug}`  ) Details
+                                                            span   
+                                                            button.btn.btn-outline-dark.removeFromCart(data-product=`${product.productName}`) Remove from cart
+                                                            //- div=products.review
+                                                            //- if user.role == 'ADMIN'
+                                                                p.text add product        
+                                                                    span               
+                                                                    a.btn.btn-outline-success(href=`addProduct`  ) Add product
+                                                                p.text Delete product        
+                                                                    span               
+                                                                    a.btn.btn-outline-danger(href=`deleteProduct`  ) Delete product
+                                                                p.text Hide product        
+                                                                    span               
+                                                                    a.btn.btn-outline-secondary(href=`hideProduct`  ) hide product
+                                                                p.text edit  product        
+                                                                    span               
+                                                                    a.btn.btn-outline-info(href=`editProduct`  ) edit product
+
+                                                                p.text unhide  product        
+                                                                    span               
+                                                                    a.btn.btn-outline-primary(href=`getAllHiddenProductList`  ) unhide products
+
 

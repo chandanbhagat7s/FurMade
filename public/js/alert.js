@@ -11,11 +11,12 @@ export const alertt = (status, message) => {
 
   hideAlert()
 
-  const markup = `<div class="alert alert-${status} fixed-top" role="alert">
+  const markup = `<div class="alert alert-${status} fixed-top " role="alert" style="z-index:3;">
     ${message}
   </div>`;
-  document.querySelector('body').insertAdjacentHTML('afterbegin', markup);
-  window.setTimeout(hideAlert, 6000)
+  document.querySelector('.navbar-select').insertAdjacentHTML('beforeend', markup);
+
+  window.setTimeout(hideAlert, 5000)
 }
 
 

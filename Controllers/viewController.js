@@ -1,5 +1,7 @@
 const Product = require("../Models/ProductSchma");
+const Review = require("../Models/ReviewSchema");
 const User = require("../Models/UserSchema");
+const Apifeature = require("../utils/apiFeature");
 const appError = require("../utils/appError");
 const runAsync = require("../utils/catchAsync")
 
@@ -19,7 +21,17 @@ exports.Home = runAsync(async (req, res, next) => {
 
 
 exports.getProduct = runAsync(async (req, res, next) => {
-    const products = await Product.findOne({ slug: req.params.slug }).populate('review');
+    console.log("request is ", req.params);
+    let products = await Product.findOne({ slug: req.params.slug }).populate({
+        path: 'review',
+        limit: 5,
+
+    });
+
+
+    products.review = products.review.sort((a, b) => b.rating - a.rating);
+
+
 
 
     if (!products) {
@@ -31,6 +43,30 @@ exports.getProduct = runAsync(async (req, res, next) => {
     res.status(200).render('each', {
         title: 'sofa',
         products
+    })
+})
+
+exports.getAllReviewOfProduct = runAsync(async (req, res, next) => {
+    let products = await Product.findOne({ slug: req.params.productName }).populate({
+        path: 'review',
+
+    });
+
+
+    products.review = products.review.sort((a, b) => b.rating - a.rating);
+
+
+
+
+    if (!products) {
+        return next(new appError("no product found with this name", 404));
+    }
+
+
+
+    res.status(200).render('allReviews', {
+        title: `Reviews of ${req.params.productName.toUpperCase()}`,
+        review: products.review
     })
 })
 
@@ -107,6 +143,37 @@ exports.getAllHiddenProduct = runAsync(async (req, res, next) => {
         products
     })
 })
+
+
+
+
+
+
+
+exports.editProduct = runAsync(async (req, res, next) => {
+    console.log("product name is ", req.params.proudttt);
+    console.log("product name is ", req.params);
+    const products = await Product.findOne({ productName: req.params.proudttt })
+
+    if (!products) {
+        return next(new appError('Product Not found'))
+
+    }
+
+
+
+
+
+
+
+
+    res.status(200).render('editProduct', {
+        title: 'Edit Products..📝',
+        products
+    })
+})
+
+
 
 
 

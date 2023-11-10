@@ -14,6 +14,7 @@ const appError = require('./utils/appError');
 //Product Router
 const productRoutes = require('./Routes/productRoutes');
 const userRoutes = require('./Routes/userRoutes');
+const paymentRoutes = require('./Routes/paymentRoutes');
 const reviewRoute = require('./Routes/reviewRoute');
 const viewRoute = require('./Routes/viewRoute');
 const cookieParser = require('cookie-parser');
@@ -62,6 +63,7 @@ app.use('/', viewRoute)
 app.use('/api/v1/product', productRoutes)
 app.use('/api/v1/user', userRoutes)
 app.use('/api/v1/review', reviewRoute)
+app.use('/api/v1/payment', paymentRoutes)
 
 app.all('*', (req, res, next) => {
   // next function called with argumnet will triger the error handler direcly okk 

@@ -1,9 +1,83 @@
-.card.text-center
-    .card-header.bg-dark.text-white
-        | Furnish
-    .card-body
-        h5.card-title Special title treatment
-        p.card-text With supporting text below as a natural lead-in to additional content.
-        a.btn.btn-primary(href="#") Go somewhere
-    .card-footer.text-muted
-        | 2 days ago
+//- Remove the container if you want to extend the Footer to full width.
+.container.my-5
+  //- Footer
+  footer.bg-dark.text-center.text-lg-start.text-white
+    //- Grid container
+    .container.p-4
+      //- Grid row
+      .row.mt-4
+        //- Grid column
+        .col-lg-3.col-md-6.mb-4.mb-md-0
+          h5.text-uppercase See other books
+          ul.list-unstyled.mb-0
+            li
+              a.text-white(href="#!")
+                i.fas.fa-book.fa-fw.fa-sm.me-2
+                | Bestsellers
+            li
+              a.text-white(href="#!")
+                i.fas.fa-book.fa-fw.fa-sm.me-2
+                | All books
+            li
+              a.text-white(href="#!")
+                i.fas.fa-user-edit.fa-fw.fa-sm.me-2
+                | Our authors
+        //- Grid column
+        .col-lg-3.col-md-6.mb-4.mb-md-0
+          h5.text-uppercase Execution of the contract
+          ul.list-unstyled
+            li
+              a.text-white(href="#!")
+                i.fas.fa-shipping-fast.fa-fw.fa-sm.me-2
+                | Supply
+            li
+              a.text-white(href="#!")
+                i.fas.fa-backspace.fa-fw.fa-sm.me-2
+                | Returns
+            li
+              a.text-white(href="#!")
+                i.far.fa-file-alt.fa-fw.fa-sm.me-2
+                | Regulations
+            li
+              a.text-white(href="#!")
+                i.far.fa-file-alt.fa-fw.fa-sm.me-2
+                | Privacy policy
+        //- Grid column
+        .col-lg-3.col-md-6.mb-4.mb-md-0
+          h5.text-uppercase Publishing house
+          ul.list-unstyled
+            li
+              a.text-white The BookStore
+            li
+              a.text-white 123 Street
+            li
+              a.text-white 05765 NY
+            li
+              a.text-white(href="#!")
+                i.fas.fa-briefcase.fa-fw.fa-sm.me-2
+                | Send us a book
+        //- Grid column
+        .col-lg-3.col-md-6.mb-4.mb-md-0
+          h5.text-uppercase Write to us
+          ul.list-unstyled
+            li
+              a.text-white(href="#!")
+                i.fas.fa-at.fa-fw.fa-sm.me-2
+                | Help in purchasing
+            li
+              a.text-white(href="#!")
+                i.fas.fa-shipping-fast.fa-fw.fa-sm.me-2
+                | Check the order status
+            li
+              a.text-white(href="#!")
+                i.fas.fa-envelope.fa-fw.fa-sm.me-2
+                | Join the newsletter
+      //- Grid row
+    //- Grid container
+    //- Copyright
+    div.text-center.p-3(style="background-color: rgba(0, 0, 0, 0.2)")
+      | © 2021 Copyright:
+      a.text-white(href="https://mdbootstrap.com/") MDBootstrap.com
+    //- Copyright
+  //- Footer
+//- End of .container

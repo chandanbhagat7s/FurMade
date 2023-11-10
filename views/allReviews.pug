@@ -1,0 +1,34 @@
+extends base
+block content
+
+    section.pt-5
+        h3.mb-4.text-center REVIEWS
+        .container
+            .row.row-cols-3
+                each r in review
+                    div.col.my-1
+                        div.card-body.border.border-2.rounded.border-dark(style="background-image:linear-gradient(to right, #caf0f8, #f0ebd8);") 
+                            img.btn(src="../img/web/user.png", alt="" style="max-width:50px")
+                            span.mb-4.text-center(style="color: #776B5D;")=r.byUser.name.toUpperCase() 
+                            hr
+                            - const arr = new Array(r.rating).fill(r.rating)
+                            each i  in arr
+                                img.btn(src="../img/web/star.png", alt="img" style="max-width:50px")
+                            hr
+                            p.dark-grey-text.mt-4=r.review
+                            p.dark-grey-text.mt-4=r.createdAt.toLocaleDateString()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

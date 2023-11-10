@@ -92,7 +92,15 @@ exports.addTocart = catchAsync(async (req, res, next) => {
     if (!item) {
         return next(new appError('falied to find the product', 404))
     }
+
     // console.log(item._id);
+
+    const isIt = await User.findById(req.userE.id);
+    if (isIt.userCart.includes(item._id)) {
+        return next(new appError('product already added ', 404))
+    }
+
+
     const addItemID = await User.findByIdAndUpdate(req.userE._id, {
         $push: { userCart: item._id }
     }, { new: true })
