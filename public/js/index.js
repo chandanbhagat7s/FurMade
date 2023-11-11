@@ -1,21 +1,24 @@
 
 import '@babel/polyfill'
 import { login, logout, signup } from './login';
-import { addNewProduct, addReviewByTour, addTocartfun, deleteProduct, editProduct, hideProduct, removeFromCart, unhideProductByName } from './functions';
+import { addNewProduct, addReviewByTour, addTocartfun, deleteProduct, editProduct, editProfileFun, hideProduct, proceedPaymentProcess, removeFromCart, unhideProductByName } from './functions';
 import { alertt } from './alert';
 
 let logins = document.querySelector('.login');
 let signIn = document.querySelector('.signupPage');
 let addProductform = document.querySelector('.addProduct');
 let editProductform = document.querySelector('.editProduct');
+let editProductform2 = document.querySelector('.editproduct2');
 
 let logoutbtn = document.querySelector('.logout')
+let paybtn = document.getElementById('paybtn')
 let addToCart = document.querySelectorAll('.addToCart')
 let addToCart2 = document.querySelector('.addToCart2')
 let removeFromCartBtn = document.querySelectorAll('.removeFromCart')
 let submitReview = document.querySelector('.submitReview')
 let deletProductForm = document.getElementById('deletProduct')
 let hideProductForm = document.getElementById('hidePRoduct')
+let editProfile = document.getElementById('editProfile')
 let unhideProductBtn = document.querySelectorAll('.unhide-btn')
 
 if (logins) {
@@ -122,10 +125,10 @@ if (removeFromCartBtn) {
 
 
 
-if (addProductform) {
+if (addProductform || editProductform2) {
 
-
-    addProductform.addEventListener('submit', e => {
+    const a = addProductform;
+    a.addEventListener('submit', e => {
         e.preventDefault();
         const productName = document.getElementById('productName').value;
         const price = document.getElementById('price').value;
@@ -389,3 +392,48 @@ if (submitReview) {
         addReviewByTour(e.target.dataset.pid, { review, rating })
     })
 }
+
+
+
+
+if (editProfile) {
+
+    editProfile.addEventListener('submit', e => {
+        e.preventDefault();
+
+        console.log(e.target.dataset.id);
+
+        // console.log();
+        const name = document.getElementsByClassName('signup-name')[0].value;
+        const email = document.getElementsByClassName('signup-email')[0].value;
+        const mobile = document.getElementsByClassName('signup-number')[0].value;
+
+        if (!name || !email || !mobile) {
+            return alertt('danger', 'please provide all the details')
+        }
+        editProfileFun(e.target.baseURI.split('/')[4], { name, email, mobile });
+
+    })
+
+
+
+
+}
+
+
+
+
+if (paybtn) {
+
+    paybtn.addEventListener('click', (e) => {
+        // console.log(e.target.parentElement.firstElementChild.innerText);
+        console.log(e.target.dataset);
+        proceedPaymentProcess(e.target.dataset)
+    })
+
+
+
+}
+
+
+

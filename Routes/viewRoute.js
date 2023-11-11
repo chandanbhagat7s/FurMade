@@ -13,7 +13,11 @@ const giveAccess = require('../Middleware/giveaccess');
 Router.get('/', isLogedIn, viewRoute.Home)
 Router.get('/me', protectRoute, viewRoute.me)
 Router.get('/login', isLogedIn, viewRoute.Login)
+Router.get('/success', isLogedIn, viewRoute.success)
+Router.get('/failure', isLogedIn, viewRoute.fail)
+Router.get('/editProfile/:id', isLogedIn, viewRoute.editProfile)
 Router.get('/signup', isLogedIn, viewRoute.signup)
+Router.get('/payNow/:productName', isLogedIn, viewRoute.buyNowCard)
 Router.get('/productss/:slug', isLogedIn, viewRoute.getProduct)
 Router.get('/allReviews/:productName', viewRoute.getAllReviewOfProduct)
 

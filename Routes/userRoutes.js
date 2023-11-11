@@ -26,14 +26,14 @@ rout.patch('/addToCart', protect.protectRoute, userController.addTocart)
 rout.patch('/removeFromCart', protect.protectRoute, userController.removeFromCart)
 rout.patch('/resetPassword/:token', authController.resetPassword)
 
-
+rout.patch('/updateUser/:id', userController.updateUser)
 
 
 //
 rout.use(protect.protectRoute, giveAccess('ADMIN'))
 rout.get('getAllUser', userController.getAll);
 rout.delete('deleteUser', userController.deleteUser);
-rout.patch('updateUser', userController.updateUser)
+
 
 
 

@@ -1,4 +1,5 @@
 const Apifeature = require("../utils/apiFeature");
+const appError = require("../utils/appError");
 const runAsync = require("../utils/catchAsync");
 
 
@@ -7,6 +8,7 @@ exports.createOne = Model => runAsync(async (req, res, next) => {
         ...req.body
     })
     if (!doc) {
+
         return next(new appError('failed to create doc please try again to create !!', 404))
     }
 
@@ -43,6 +45,7 @@ exports.getAll = Model => runAsync(async (req, res, next) => {
 exports.getOne = Model => runAsync(async (req, res, next) => {
 
     const doc = await Model.findById(req.params.id)
+    console.log(doc);
 
     if (!doc) {
         console.log("entred");

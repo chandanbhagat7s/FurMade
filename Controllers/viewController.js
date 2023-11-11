@@ -15,6 +15,50 @@ exports.Home = runAsync(async (req, res, next) => {
         products
     })
 })
+exports.success = runAsync(async (req, res, next) => {
+    // const products = await Product.find();
+    // console.log(products);
+
+    res.status(200).render('success', {
+        title: 'success',
+        // products
+    })
+})
+exports.fail = runAsync(async (req, res, next) => {
+    // const products = await Product.find();
+    // console.log(products);
+
+    res.status(200).render('failed', {
+        title: 'failed',
+        // products
+    })
+})
+
+
+exports.buyNowCard = runAsync(async (req, res, next) => {
+    const products = await Product.findById(req.params.productName);
+
+    if (!products) {
+        return next(new appError("product not found !!", 404))
+    }
+
+
+    res.status(200).render('payNow', {
+        title: 'Pay 💸',
+        products
+    })
+})
+
+
+exports.editProfile = runAsync(async (req, res, next) => {
+    const user = await User.findById(req.params.id);
+    console.log(user);
+
+    res.status(200).render('editProfile', {
+        title: 'Edit Profile.. 🧑‍🏫',
+        user
+    })
+})
 
 
 

@@ -1,0 +1,34 @@
+
+
+extends base
+block content
+
+    section.py-1.first-templat-up(style="background-color: #F3EEEA; ")
+        .container.px-4.px-lg-5.my-5
+            .row.gx-4.gx-lg-5.align-items-center
+                .col-md-6
+                    img.card-img-top.mb-5.mb-md-0(src=`./../img/${products.productName}-2.jpeg`, alt='...')
+                .col-md-6
+                    .small.mb-1=products.type
+                    h1.display-5.fw-bolder=products.productName.toUpperCase()
+                    .fs-5.mb-5
+                        //- span.text-decoration-line-through $45.00
+                        h1
+                            strong=`₹ ${products.price}`
+                    strong=`About :`
+                        p.lead=` ${products.about}`
+
+                    button#paybtn.btn.btn-outline-primary.flex-shrink-0(data-uid=products._id data-pid=user._id) Pay Now !
+
+
+
+
+
+
+
+
+
+
+
+
+

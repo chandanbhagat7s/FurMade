@@ -3,19 +3,25 @@ const express = require('express');
 
 
 const Route = express.Router();
+const factory = require('./../Controllers/factory')
 // including controllers file of product
 const productRoute = require('./../Controllers/productController');
 const protect = require('../Middleware/protect');
 const giveAccess = require('../Middleware/giveaccess');
-const reviewRouter = require('./reviewRoute')
+const reviewRouter = require('./reviewRoute');
+const product = require('../Models/ProductSchma');
 
 
 
 
 Route.use('/:productId/review', reviewRouter);
+Route.get('/:id', factory.getOne(product))
 Route.get('/getByName/:name', productRoute.getProductByName);
 Route.patch('/hideproduct/:name', productRoute.getProductByNameandHide);
 Route.patch('/unhideProduct/:name', productRoute.unhideHiddenProduct);
+
+
+
 // Route.get('/getHiddenProduct', productRoute.getAllHiddenProduct);
 
 

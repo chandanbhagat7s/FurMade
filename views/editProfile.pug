@@ -1,0 +1,41 @@
+
+extends base
+block content
+
+    .card.mb-3(style="max-width: 1000px").m-auto
+        .row.no-gutters.mx-2
+            .col-md-4.my-auto
+                //- img.card-img(src="/images/product/bed-1.jpg", alt="#")
+            .col-md-8
+                .card-body.p-2
+                    h1.card-title EDIT  Now!
+                form#editProfile
+                    .form-group
+                        label(for="exampleInputEmail1" ) Enter name
+                        input(type="text", class="form-control signup-name", id="exampleInputEmail1", aria-describedby="emailHelp", placeholder="Enter name" value=`${user.name}`)
+                        label(for="exampleInputEmail1") Email address
+                        input(type="email", class="form-control signup-email", id="exampleInputEmail1", aria-describedby="emailHelp", placeholder="Enter email" value=`${user.email}`)
+                        small.form-text.text-muted We'll never share your email with anyone else.
+                        //- .form-group
+                        br
+                        label(for="exampleInputEmail1") Mobile Number
+                        input(type="number", class="form-control signup-number", id="exampleInputEmail1", aria-describedby="emailHelp", placeholder="Enter Phone Number" value=user.mobile)
+                    .form-group.my-2
+
+                    
+                    button(type="submit", class="btn  btn-outline-dark my-2") Update !
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -4,6 +4,7 @@
 const path = require('path')
 const express = require('express');
 const morgan = require('morgan');
+const cors = require('cors');
 
 
 const globalErrorHandler = require('./Controllers/errorController');
@@ -29,7 +30,7 @@ app.use(express.json())
 console.log(process.env.NODE_ENV);
 
 app.use(morgan('dev'))
-
+app.use(cors());
 
 app.use(cookieParser())
 
