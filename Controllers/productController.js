@@ -198,6 +198,26 @@ exports.getProductById = catchAsync(async (req, res, next) => {
 
 
 // get product by name
+exports.getProductByType = catchAsync(async (req, res, next) => {
+    console.log(req.params);
+    const product = await Product.find({ type: req.params.type })
+    // console.log("product is : ..................... ", product);
+
+    if (!product || product.length == 0) {
+        // console.log("entred");
+        return next(new appError('unable to find id ', 404))
+    }
+    res.status(200).json({
+        status: 'success',
+        data: {
+            product
+        }
+    })
+
+
+
+
+})
 exports.getProductByName = catchAsync(async (req, res, next) => {
     console.log(req.params);
     const product = await Product.find({ productName: req.params.name })

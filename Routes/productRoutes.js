@@ -17,6 +17,7 @@ const product = require('../Models/ProductSchma');
 Route.use('/:productId/review', reviewRouter);
 Route.get('/:id', factory.getOne(product))
 Route.get('/getByName/:name', productRoute.getProductByName);
+Route.get('/getByType/:type', productRoute.getProductByType);
 Route.patch('/hideproduct/:name', productRoute.getProductByNameandHide);
 Route.patch('/unhideProduct/:name', productRoute.unhideHiddenProduct);
 

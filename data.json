@@ -205,5 +205,468 @@
         ],
         "about": "Elegant lamp to enhance your room's ambiance.Get a good night's sleep with this comfortable bed.Get a good night's sleep with this comfortable bed.Get a good night's sleep with this comfortable bed.Get a good night's sleep with this comfortable bed.",
         "summery": "Brighten up your space with this stylish lamp.Get a good night's sleep with this comfortable bed.Get a good night's sleep with this comfortable bed.Get a good night's sleep with this comfortable bed.Get a good night's sleep with this comfortable bed."
+    },
+    {
+        "productName": "large-sofa",
+        "price": 6500,
+        "avgRating": 4.2,
+        "ratingQuantity": 3.5,
+        "type": "large-sofa",
+        "deliveredIn": "5 days",
+        "description": "Spacious and comfortable sofa for your living room.",
+        "colors": [
+            "Brown",
+            "Beige",
+            "Charcoal"
+        ],
+        "discount": 40,
+        "deliveryCharges": 25,
+        "replacementIn": "7 days",
+        "paymentMethod": [
+            "Credit Card",
+            "PayPal"
+        ],
+        "warranty": "2 years",
+        "stillSold": 80,
+        "coverImage": "large_sofa_cover.jpg",
+        "images": [
+            "large_sofa_1.jpg",
+            "large_sofa_2.jpg",
+            "large_sofa_3.jpg"
+        ],
+        "dimensions": [
+            100,
+            180,
+            70
+        ],
+        "about": "Extra-large sofa designed for maximum comfort.",
+        "features": [
+            "Plush fabric upholstery",
+            "Reclining seats",
+            "Solid metal frame",
+            "Modern design",
+            "Feather-filled cushions"
+        ],
+        "summary": "Create a cozy and inviting space with this spacious large sofa."
+    },
+    {
+        "productName": "bed",
+        "price": 1200,
+        "avgRating": 4.0,
+        "ratingQuantity": 4.0,
+        "type": "bed",
+        "deliveredIn": "4 days",
+        "description": "Sturdy and stylish bed for a good night's sleep.",
+        "colors": [
+            "White",
+            "Walnut",
+            "Black"
+        ],
+        "discount": 30,
+        "deliveryCharges": 15,
+        "replacementIn": "14 days",
+        "paymentMethod": [
+            "Debit Card",
+            "Cash on Delivery"
+        ],
+        "warranty": "3 years",
+        "stillSold": 120,
+        "coverImage": "bed_cover.jpg",
+        "images": [
+            "bed_1.jpg",
+            "bed_2.jpg",
+            "bed_3.jpg"
+        ],
+        "dimensions": [
+            160,
+            200,
+            30
+        ],
+        "about": "Durable and elegant bed frame for a restful sleep.",
+        "features": [
+            "Solid wood construction",
+            "Sleek headboard design",
+            "Easy assembly",
+            "Under-bed storage option"
+        ],
+        "summary": "Transform your bedroom with this stylish and comfortable bed."
+    },
+    {
+        "productName": "mattress-bed",
+        "price": 1500,
+        "avgRating": 4.5,
+        "ratingQuantity": 4.2,
+        "type": "mattress-bed",
+        "deliveredIn": "3 days",
+        "description": "Convenient and comfortable mattress-in-a-box bed.",
+        "colors": [
+            "Gray",
+            "Navy Blue",
+            "Charcoal"
+        ],
+        "discount": 25,
+        "deliveryCharges": 18,
+        "replacementIn": "10 days",
+        "paymentMethod": [
+            "E-wallet",
+            "Installments"
+        ],
+        "warranty": "2 years",
+        "stillSold": 90,
+        "coverImage": "mattress_bed_cover.jpg",
+        "images": [
+            "mattress_bed_1.jpg",
+            "mattress_bed_2.jpg",
+            "mattress_bed_3.jpg"
+        ],
+        "dimensions": [
+            140,
+            190,
+            25
+        ],
+        "about": "Enjoy a hassle-free sleep solution with this mattress-in-a-box bed.",
+        "features": [
+            "Memory foam mattress",
+            "Breathable fabric cover",
+            "Easy setup",
+            "Hygienic and hypoallergenic"
+        ],
+        "summary": "Experience comfort and convenience with this innovative mattress-in-a-box bed."
+    },
+    {
+        "productName": "cupboard",
+        "price": 2200,
+        "avgRating": 4.3,
+        "ratingQuantity": 4.0,
+        "type": "cupboard",
+        "deliveredIn": "6 days",
+        "description": "Spacious cupboard for organized storage in your home.",
+        "colors": [
+            "Oak",
+            "Espresso",
+            "White"
+        ],
+        "discount": 35,
+        "deliveryCharges": 22,
+        "replacementIn": "15 days",
+        "paymentMethod": [
+            "Credit Card",
+            "PayPal"
+        ],
+        "warranty": "2 years",
+        "stillSold": 75,
+        "coverImage": "cupboard_cover.jpg",
+        "images": [
+            "cupboard_1.jpg",
+            "cupboard_2.jpg",
+            "cupboard_3.jpg"
+        ],
+        "dimensions": [
+            100,
+            180,
+            50
+        ],
+        "about": "Keep your belongings organized with this spacious and durable cupboard.",
+        "features": [
+            "Adjustable shelves",
+            "Sturdy construction",
+            "Modern design",
+            "Ample storage space"
+        ],
+        "summary": "Maximize your storage solutions with this versatile and stylish cupboard."
+    },
+    {
+        "productName": "dining-table",
+        "price": 1500,
+        "avgRating": 4.5,
+        "ratingQuantity": 4.2,
+        "type": "dining-table",
+        "deliveredIn": "4 days",
+        "description": "Elegant dining table for family gatherings and meals.",
+        "colors": [
+            "Walnut",
+            "Cherry",
+            "White"
+        ],
+        "discount": 30,
+        "deliveryCharges": 18,
+        "replacementIn": "12 days",
+        "paymentMethod": [
+            "Debit Card",
+            "Cash on Delivery"
+        ],
+        "warranty": "3 years",
+        "stillSold": 90,
+        "coverImage": "dining_table_cover.jpg",
+        "images": [
+            "dining_table_1.jpg",
+            "dining_table_2.jpg",
+            "dining_table_3.jpg"
+        ],
+        "dimensions": [
+            120,
+            200,
+            75
+        ],
+        "about": "Create memorable dining experiences with this stylish and functional dining table.",
+        "features": [
+            "Solid wood construction",
+            "Extendable for extra guests",
+            "Classic design",
+            "Easy to clean surface"
+        ],
+        "summary": "Gather around this beautiful dining table for enjoyable family meals."
+    },
+    {
+        "productName": "table-large",
+        "price": 1800,
+        "avgRating": 4.0,
+        "ratingQuantity": 3.8,
+        "type": "table-large",
+        "deliveredIn": "5 days",
+        "description": "Versatile and spacious large table for various uses.",
+        "colors": [
+            "Black",
+            "Oak",
+            "Mahogany"
+        ],
+        "discount": 25,
+        "deliveryCharges": 20,
+        "replacementIn": "10 days",
+        "paymentMethod": [
+            "Bank Transfer",
+            "Cryptocurrency"
+        ],
+        "warranty": "2 years",
+        "stillSold": 80,
+        "coverImage": "large_table_cover.jpg",
+        "images": [
+            "large_table_1.jpg",
+            "large_table_2.jpg",
+            "large_table_3.jpg"
+        ],
+        "dimensions": [
+            150,
+            250,
+            60
+        ],
+        "about": "A spacious and sturdy table suitable for various purposes in your home.",
+        "features": [
+            "Durable construction",
+            "Wide surface area",
+            "Modern design",
+            "Multipurpose use"
+        ],
+        "summary": "Upgrade your living space with this versatile and stylish large table."
+    },
+    {
+        "productName": "small-temple",
+        "price": 500,
+        "avgRating": 4.0,
+        "ratingQuantity": 3.8,
+        "type": "small-temple",
+        "deliveredIn": "4 days",
+        "description": "Compact and elegant small temple for your spiritual space.",
+        "colors": [
+            "Teak",
+            "Mahogany",
+            "White"
+        ],
+        "discount": 10,
+        "deliveryCharges": 10,
+        "replacementIn": "10 days",
+        "paymentMethod": [
+            "Credit Card",
+            "PayPal"
+        ],
+        "warranty": "1 year",
+        "stillSold": 80,
+        "coverImage": "small_temple_cover.jpg",
+        "images": [
+            "small_temple_1.jpg",
+            "small_temple_2.jpg",
+            "small_temple_3.jpg"
+        ],
+        "dimensions": [
+            40,
+            60,
+            20
+        ],
+        "about": "Create a serene corner in your home with this compact and spiritual small temple.",
+        "features": [
+            "Intricate design",
+            "Quality craftsmanship",
+            "Compact size",
+            "Ideal for small spaces"
+        ],
+        "summary": "Bring spirituality into your home with this beautifully crafted small temple."
+    },
+    {
+        "productName": "bookshelf",
+        "price": 800,
+        "avgRating": 4.5,
+        "ratingQuantity": 4.2,
+        "type": "bookshelf",
+        "deliveredIn": "3 days",
+        "description": "Functional and stylish bookshelf for organizing your book collection.",
+        "colors": [
+            "Oak",
+            "White",
+            "Black"
+        ],
+        "discount": 15,
+        "deliveryCharges": 12,
+        "replacementIn": "7 days",
+        "paymentMethod": [
+            "Debit Card",
+            "Cash on Delivery"
+        ],
+        "warranty": "1 year",
+        "stillSold": 100,
+        "coverImage": "bookshelf_cover.jpg",
+        "images": [
+            "bookshelf_1.jpg",
+            "bookshelf_2.jpg",
+            "bookshelf_3.jpg"
+        ],
+        "dimensions": [
+            80,
+            120,
+            30
+        ],
+        "about": "Maximize your storage space with this sleek and practical bookshelf.",
+        "features": [
+            "Adjustable shelves",
+            "Sturdy construction",
+            "Modern design",
+            "Space-saving"
+        ],
+        "summary": "Organize your books in style with this versatile and compact bookshelf."
+    },
+    {
+        "productName": "medium-cupboard",
+        "price": 1800,
+        "avgRating": 4.2,
+        "ratingQuantity": 4.0,
+        "type": "medium-cupboard",
+        "deliveredIn": "5 days",
+        "description": "Versatile and practical medium-sized cupboard for organized storage.",
+        "colors": [
+            "Walnut",
+            "Cherry",
+            "White"
+        ],
+        "discount": 25,
+        "deliveryCharges": 18,
+        "replacementIn": "12 days",
+        "paymentMethod": [
+            "Credit Card",
+            "PayPal"
+        ],
+        "warranty": "2 years",
+        "stillSold": 75,
+        "coverImage": "medium_cupboard_cover.jpg",
+        "images": [
+            "medium_cupboard_1.jpg",
+            "medium_cupboard_2.jpg",
+            "medium_cupboard_3.jpg"
+        ],
+        "dimensions": [
+            100,
+            160,
+            50
+        ],
+        "about": "A balanced choice for efficient storage with a touch of elegance.",
+        "features": [
+            "Adjustable shelves",
+            "Durable wood construction",
+            "Classic design",
+            "Optimal storage capacity"
+        ],
+        "summary": "Achieve a perfect blend of functionality and style with this medium-sized cupboard."
+    },
+    {
+        "productName": "small-cupboard",
+        "price": 1200,
+        "avgRating": 4.0,
+        "ratingQuantity": 3.8,
+        "type": "small-cupboard",
+        "deliveredIn": "4 days",
+        "description": "Compact and stylish small cupboard for efficient storage.",
+        "colors": [
+            "White",
+            "Oak",
+            "Gray"
+        ],
+        "discount": 20,
+        "deliveryCharges": 15,
+        "replacementIn": "10 days",
+        "paymentMethod": [
+            "Debit Card",
+            "Cash on Delivery"
+        ],
+        "warranty": "1 year",
+        "stillSold": 90,
+        "coverImage": "small_cupboard_cover.jpg",
+        "images": [
+            "small_cupboard_1.jpg",
+            "small_cupboard_2.jpg",
+            "small_cupboard_3.jpg"
+        ],
+        "dimensions": [
+            80,
+            120,
+            40
+        ],
+        "about": "Optimize your space with this compact and functional small cupboard.",
+        "features": [
+            "Space-saving design",
+            "Sturdy construction",
+            "Modern finish",
+            "Ideal for small rooms"
+        ],
+        "summary": "Add storage without sacrificing space with this stylish small cupboard."
+    },
+    {
+        "productName": "large-cupboard",
+        "price": 2800,
+        "avgRating": 4.4,
+        "ratingQuantity": 4.2,
+        "type": "large-cupboard",
+        "deliveredIn": "7 days",
+        "description": "Extra-large cupboard for ample storage space in your living space.",
+        "colors": [
+            "Espresso",
+            "White",
+            "Maple"
+        ],
+        "discount": 40,
+        "deliveryCharges": 25,
+        "replacementIn": "20 days",
+        "paymentMethod": [
+            "Credit Card",
+            "PayPal"
+        ],
+        "warranty": "3 years",
+        "stillSold": 60,
+        "coverImage": "large_cupboard_cover.jpg",
+        "images": [
+            "large_cupboard_1.jpg",
+            "large_cupboard_2.jpg",
+            "large_cupboard_3.jpg"
+        ],
+        "dimensions": [
+            120,
+            220,
+            60
+        ],
+        "about": "Maximize your storage capacity with this extra-large and stylish cupboard.",
+        "features": [
+            "Adjustable shelves",
+            "Durable wood construction",
+            "Modern design",
+            "Spacious interior"
+        ],
+        "summary": "Create an organized and clutter-free living space with this extra-large cupboard."
     }
 ]
