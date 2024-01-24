@@ -30,8 +30,11 @@ app.use(express.json())
 console.log(process.env.NODE_ENV);
 
 app.use(morgan('dev'))
-app.use(cors());
+// app.use(cors({
+//   origin: 'http://localhost:5173'
+// }));
 
+app.use(cors({ origin: "http://localhost:5173", credentials: true }));
 app.use(cookieParser())
 
 // for renderring pages 
@@ -42,7 +45,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 
 app.use((req, res, next) => {
-  // console.log(req.headers);
+
   next();
 })
 

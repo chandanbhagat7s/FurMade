@@ -119,7 +119,9 @@ userSchema.pre('save', function (next) {
 // })
 
 userSchema.methods.correctPass = async function (inputpassword, password) {
-    return await bcrypt.compare(inputpassword, password)
+    let t = await bcrypt.compare(inputpassword, password)
+    console.log(t);
+    return t
 }
 
 userSchema.methods.IsPasswordChanged = function (time) {

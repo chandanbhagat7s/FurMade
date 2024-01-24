@@ -19,6 +19,7 @@ const validationErrorHandlerDB = (err) => {
 }
 
 const callProdError = (err, req, res) => {
+    // console.log(err);
     if (req.originalUrl.startsWith('/api')) {
         if (err.isOperational) {
             err.statusCode = err.statusCode || 500;
@@ -82,7 +83,7 @@ module.exports = (err, req, res, next) => {
 
     // distigushing between env..
     if (process.env.NODE_ENV === 'production') {
-
+        let error;
         if (err.name == 'CastError') {
             error = castErrorHandlerDB(err);
         }
@@ -95,7 +96,7 @@ module.exports = (err, req, res, next) => {
         }
 
 
-        callProdError(err, req, res)
+        callProdError(error || err, req, res)
     } else {
         callDevError(err, req, res);
     }

@@ -41,7 +41,8 @@ const multerFilter = (req, file, cb) => {
 }
 
 exports.resizeImage = catchAsync(async (req, res, next) => {
-    console.log(req.files);
+    console.log(req.body);
+    console.log("file is ", req.files);
     if (!req.files.coverImage || !req.files.Images) {
         return next(new appError("please upload a file", 400))
     }

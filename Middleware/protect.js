@@ -63,6 +63,7 @@ exports.protectRoute = runAsync(async (req, res, next) => {
     // console.log("cookies", req.cookies.jwt);
     if (req.cookies) {
         token = req.cookies.jwt
+        console.log("req.cookies.jwt", req.cookies.jwt);
     }
     if (req.headers.authorization) {
         token = req.headers.authorization.split(' ')[1]

@@ -96,8 +96,9 @@ exports.addTocart = catchAsync(async (req, res, next) => {
     // console.log(item._id);
 
     const isIt = await User.findById(req.userE.id);
+
     if (isIt.userCart.includes(item._id)) {
-        return next(new appError('product already added ', 404))
+        return next(new appError('product already added ', 400))
     }
 
 
@@ -105,10 +106,10 @@ exports.addTocart = catchAsync(async (req, res, next) => {
         $push: { userCart: item._id }
     }, { new: true })
 
-    // console.log(addItemID);
 
     res.status(200).json({
-        status: 'success'
+        status: 'success',
+        data: addItemID
 
     })
 
@@ -131,7 +132,8 @@ exports.removeFromCart = catchAsync(async (req, res, next) => {
     // console.log(addItemID);
 
     res.status(200).json({
-        status: 'success'
+        status: 'success',
+        data: addItemID
 
     })
 
