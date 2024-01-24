@@ -5,6 +5,7 @@ const path = require('path');
 const multer = require('multer')
 const sharp = require('sharp')
 const fs = require('fs');
+const cloudinary = require('cloudinary');
 
 //feature API
 const Apifeature = require('../utils/apiFeature');
@@ -50,15 +51,17 @@ exports.resizeImage = catchAsync(async (req, res, next) => {
 
     // cover image
     req.body.coverImage = `${req.body.productName}-cover.jpeg`
-    await sharp(req.files.coverImage[0].buffer).resize(170, 270).toFormat('jpeg').jpeg({ quality: 80 }).toFile(`public/img/${req.body.coverImage}`)
+    await sharp(req.files.coverImage[0].buffer).toFormat('jpeg').toFile(`public/img/${req.body.coverImage}`)
 
     // images
     req.body.Images = []
-    await Promise.all(req.files.Images.map(async (el, i) => {
-        const fileName = `${req.body.productName}-${i}.jpeg`
-        await sharp(el.buffer).resize(1250, 830).toFormat('jpeg').jpeg({ quality: 80 }).toFile(`./public/img/${fileName}`)
-        req.body.Images.push(fileName);
-    }))
+    // req.files.images &&
+    //     await Promise.all(req.files.Images.map(async (el, i) => {
+    //         const fileName = `${req.body.productName}-${i}.jpeg`
+    //         await sharp(el.buffer).resize(1250, 830).toFormat('jpeg').jpeg({ quality: 80 }).toFile(`./public/img/${fileName}`)
+    //         req.body.Images.push(fileName);
+    //     }))
+    console.log("exit");
 
     next()
 
@@ -87,8 +90,28 @@ exports.uploadImages = uploads.fields([
 exports.createNewProduct = catchAsync(async (req, res, next) => {
     console.log("req.body is ", req.body);
     // console.log(req.file);
-    if (req.file) {
-        req.body.coverImage = req.file.filename;
+    if (req.files) {
+        console.log(req.files);
+        // file link to besaved in the database 
+        // console.log("file infor", req.file);
+        const result = await cloudinary.v2.uploader.upload(`public/img/${req.body.coverImage}`, {
+            folder: 'lms', // Save files in a folder named lms
+            // width: 250,
+            // height: 250,
+            // gravity: 'faces', // This option tells cloudinary to center the image around detected faces (if any) after cropping or resizing the original image
+            // crop: 'fill',
+        });
+        console.log(result);
+
+
+        if (result) {
+            // Set the public_id and secure_url in DB
+            req.body.public_id = result.public_id;
+            req.body.coverImage = result.secure_url;
+
+            // After successful upload remove the file from local storage
+            // fs.rm(`uploads/${req.file.filename}`);
+        }
     }
     // if (req.file) {
     //     req.body.coverImage = req.file.filename

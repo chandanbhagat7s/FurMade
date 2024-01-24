@@ -19,6 +19,7 @@ const paymentRoutes = require('./Routes/paymentRoutes');
 const reviewRoute = require('./Routes/reviewRoute');
 const viewRoute = require('./Routes/viewRoute');
 const cookieParser = require('cookie-parser');
+const cloudinary = require('cloudinary');
 
 // Start express app
 const app = express();
@@ -49,7 +50,14 @@ app.use((req, res, next) => {
   next();
 })
 
+// cloudanary configration
 
+
+cloudinary.v2.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.API_KEY,
+  api_secret: process.env.API_SECRET
+});
 // creating objject
 // const newProduct = product({
 //   productName: "a",

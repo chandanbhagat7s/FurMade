@@ -58,7 +58,10 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    Images: [String],
+    Images: {
+        type: [String],
+        // required: [true, "please provide multiple images of product"]
+    },
     dim: {
         type: [Number],
         // required: true
