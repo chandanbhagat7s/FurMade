@@ -35,7 +35,11 @@ app.use(morgan('dev'))
 //   origin: 'http://localhost:5173'
 // }));
 
-app.use(cors({ origin: "http://localhost:5173", credentials: true }));
+app.use(cors({
+  origin: "http://localhost:5173", credentials: true,
+  'Access-Control-Allow-Origin': '*',
+  Vary: 'Origin'
+}));
 app.use(cookieParser())
 
 // for renderring pages 

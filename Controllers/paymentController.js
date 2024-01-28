@@ -95,7 +95,8 @@ exports.newPayment = async (req, res) => {
             mobileNumber: req.body.number,
             paymentInstrument: {
                 type: 'PAY_PAGE'
-            }
+            },
+
         };
         const payload = JSON.stringify(data);
         const payloadMain = Buffer.from(payload).toString('base64');
@@ -115,11 +116,17 @@ exports.newPayment = async (req, res) => {
             headers: {
                 accept: 'application/json',
                 'Content-Type': 'application/json',
-                'X-VERIFY': checksum
+                'X-VERIFY': checksum,
+                withCredentials: true,
+                'Access-Control-Allow-Origin': '*',
+                Vary: 'Origin'
+
             },
             data: {
                 request: payloadMain
-            }
+            },
+
+
         };
 
         axios.request(options).then(function (response) {
@@ -162,7 +169,7 @@ exports.checkStatus = async (req, res) => {
 
     // CHECK PAYMENT TATUS
     axios.request(options).then(async (response) => {
-        console.log(response.data);
+        console.log("*****came into ", response.data);
         if (response.data.success === true) {
             const url = `http://localhost:3000/success`
             return res.redirect(url)

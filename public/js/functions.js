@@ -256,7 +256,7 @@ export const proceedPaymentProcess = async (info) => {
             MUID: "MUID" + Date.now(),
             transactionId: 'T' + Date.now(),
         }
-        const res = await axios.post('http://127.0.0.1:3000/api/v1/payment/payment', {
+        const res = await axios.post('http://127.0.0.1:3000/api/v1/payment/payment', { 
             MUID: data.MUID,
             name: data.name,
             amount: data.amount,

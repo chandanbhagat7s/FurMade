@@ -55,12 +55,12 @@ exports.resizeImage = catchAsync(async (req, res, next) => {
 
     // images
     req.body.Images = []
-    // req.files.images &&
-    //     await Promise.all(req.files.Images.map(async (el, i) => {
-    //         const fileName = `${req.body.productName}-${i}.jpeg`
-    //         await sharp(el.buffer).resize(1250, 830).toFormat('jpeg').jpeg({ quality: 80 }).toFile(`./public/img/${fileName}`)
-    //         req.body.Images.push(fileName);
-    //     }))
+    req.files.images &&
+        await Promise.all(req.files.Images.map(async (el, i) => {
+            const fileName = `${req.body.productName}-${i}.jpeg`
+            await sharp(el.buffer).toFormat('jpeg').toFile(`./public/img/${fileName}`)
+            req.body.Images.push(fileName);
+        }))
     console.log("exit");
 
     next()
