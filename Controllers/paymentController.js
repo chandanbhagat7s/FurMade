@@ -3,6 +3,8 @@ const crypto = require('crypto');
 
 const appError = require("../utils/appError");
 const runAsync = require("../utils/catchAsync");
+const Razorpay = require('razorpay');
+// const { instance } = require('../server');
 
 
 
@@ -195,5 +197,68 @@ exports.checkStatus = async (req, res) => {
 
 
 
+
+
+const instance = new Razorpay({
+    key_id: process.env.KEY_ID,
+    key_secret: process.env.KEY_SEC,
+});
+
+exports.getKey = (req, res, next) => {
+    res.status(200).send({
+        key: process.env.KEY_ID
+    })
+}
+
+
+//////STARTING WITH THE RAZORPAY
+exports.pay = async (req, res, next) => {
+
+    try {
+
+        const amount = req.body.amount * 100
+
+        const options = {
+            amount: amount,
+            currency: 'INR',
+            receipt: req.body.email
+        }
+
+        const order = await instance.orders.create(options);
+
+        res.status(200).send({
+            status: true,
+            order
+        })
+
+    } catch (error) {
+        console.log(error);
+        next(new appError("failed to process order", 400))
+    }
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
+// now we have provided the callback url in the options 
+exports.verifyPayment = (req, res, next) => {
+    try {
+        res.status(200).send({
+            status: true
+        })
+    } catch (e) {
+
+    }
+}
 
 

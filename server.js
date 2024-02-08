@@ -20,6 +20,7 @@ process.on('uncaughtException', err => {
 
 
 const app = require("./app");
+const Razorpay = require("razorpay");
 
 
 // console.log(app.get('env'));
@@ -35,6 +36,13 @@ mongoose.connect(process.env.DATABASE, {
 // .catch(err => {
 //     // hear you handled the error but suppose in the big applicatuion it is difficult to handle the promise which is rejected 
 //     console.log("Could not connect", err);
+// });
+
+
+// razorpay instance
+// exports.instance = new Razorpay({
+//     key_id: process.env.KEY_ID,
+//     key_secret: process.env.KEY_SEC,
 // });
 
 
